@@ -1,0 +1,181 @@
+.backgroundForhome { 
+    background: url(/Pictures/Background1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+/***** For header and nav styles *****/
+.headerArea {
+    padding: 10px 0;
+    background: #37517e
+}
+.headerArea.fixed {
+    position: absolute;
+    left: 0;
+    right: 0
+}
+.headerArea h3 {
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+}
+.headerRightArea {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center
+}
+.headerMenu ul {
+    padding: 0;
+    margin: 0
+}
+.headerMenu ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 25px;
+    position: relative
+}
+.headerMenu ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff
+}
+.headerMenu ul li a:hover:not(.active) {
+    color: #97aef7
+}
+.f-right {
+    float: right;
+}
+/***** End Section *****/
+/***** Dashboard styles *****/
+.dashboardArea {
+    background: #f0f8ff
+}
+.sidebaArea {
+    background: #fff;
+    padding: 35px 0;
+    border-radius: 5px
+}
+.sidebarTopArea {
+    margin-bottom: 30px
+}
+.userName h3 {
+    font-size: 21px;
+    color: #37517e
+}
+.slidebarNavArea ul {
+    padding-left: 0;
+    margin: 0
+}
+.slidebarNavArea ul li.navItem {
+    list-style: none;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: .4s;
+    position: relative
+}
+.slidebarNavArea ul li.navItem a {
+    color: #37517e;
+    display: flex;
+    text-decoration: none;
+    align-items: center
+}
+.slidebarNavArea ul li.navItem a svg {
+    margin-right: 10px
+}
+.slidebarNavArea ul li.navItem.active {
+    background: #37517eeb;
+}
+.slidebarNavArea ul li.navItem:hover {
+    background: #37517eeb;
+}
+.slidebarNavArea ul li.navItem:hover a {
+    color: #fff
+}
+.slidebarNavArea ul li.navItem.active a {
+    color: #fff
+}
+.slidebarNavArea ul li.navItem a span.pull-right-container {
+    position: absolute;
+    right: 10px
+}
+.slidebarNavArea ul li.navItem.show ul.submenu {
+    display: block
+}
+ul.submenu {
+    padding: 0;
+    margin: 0;
+    padding-left: 25px;
+    display: none;
+    transition: .4s
+}
+ul.submenu li {
+    list-style: none;
+    padding-top: 10px
+}
+ul.submenu li a {
+    font-size: 14px
+}
+
+.singleCard {
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 15px
+}
+
+.count h4 {
+    color: #37517e;
+    font-size: 35px;
+}
+.balanceLabel p {
+    margin-bottom: 0;
+    color: #37517e;
+    font-size: 18px
+}
+
+.balanceLabel {
+    margin-top: 15px
+}
+/***** End Section *****/
+/***** Services styles *****/
+.service{
+    background-color: whitesmoke;
+    height: 850px;
+}
+.service h1{
+    font-size: 70px;
+    font-weight:700;
+    color: #37517e
+    
+}
+.service ul li{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    
+    list-style-type: style bloc;;
+}
+.carousel-inner {
+    border-top: 10px;
+    border-left: 10px;
+    border-right: 10px;
+    border-bottom: 10px;
+    border-color: #37517e;
+    border-style: solid;
+}
+
+.servicePadding {
+    padding: 25px 0;
+}
+/***** End Services *****/
+
+/***** footer Area *****/
+footer {
+    background: #37517eeb;  
+}
+
+footer p {
+    color: rgb(255, 250, 250);
+}
+/***** End Section *****/
