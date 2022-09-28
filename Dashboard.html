@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="bootstrap-5.2.1-dist\css\bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="default.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <title>Northland Bank</title>
     
 </head>
@@ -54,7 +56,8 @@
                 <nav>
                   <ul>
                     <li class="navItem active"><a href="">Dashboard</a></li>
-                    <li class="navItem"><a href="">Withdraw</a></li>
+                    <li class="navItem"><a onclick="document.getElementById('withdraw').style.display='block'" >Withdraw</a></li>
+
                     <li class="navItem"><a href="">Deposit</a></li>
                     <li class="navItem submenu">
                       <a href="DTransfer.html">Transfer
@@ -165,6 +168,21 @@
       </div>
     </div>
   </section>
+  <!-- ========== End Section ========== -->
+
+  <!-- ========== Modal Section Section ========== -->
+  <div class="w3-container">
+    <div id="withdraw" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('withdraw').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <p>Some text. Some text. Some text.</p>
+                <p>Some text. Some text. Some text.</p>
+            </div>
+        </div>
+    </div>
+</div>
   <!-- ========== End Section ========== -->
   <!-- ========== footer Section ========== -->
   <footer class="py-5">
