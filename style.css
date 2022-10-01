@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 .backgroundForhome { 
     background: url(Pictures/Background1.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -144,13 +147,13 @@ ul.submenu li a {
 
 /***** Home styles *****/
 
-#homestyle h1{
-    color:rgb(245, 245, 245);
-    font-size: 60px;
+#homestyle h1 {
+    color: rgb(245, 245, 245);
+    font-size: 70px;
     text-shadow: 3px 3px #256D85;
 }
-#homestyle p{
-    color: white;
+
+#homestyle p {
     font-family: 'Libre Baskerville', serif;
     color: #DFF6FF;
     font-size: 50px;
@@ -161,30 +164,86 @@ ul.submenu li a {
     -o-animation: fadeIn 5s;
     -ms-animation: fadeIn 5s;
 }
+
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-moz-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-webkit-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-o-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-ms-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.loginbutton {
+    margin-left: 20%;
+    padding: 25px 30px;
+    border: none;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+    transition: 0.5s;
+    border-radius: 25px;
+}
+
+.loginbutton a {
+    font-weight: bolder;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    letter-spacing: 4px;
+    transition: 0.5s;
+}
+.loginbutton:hover{
+    background-color: #256d85ab;
+    cursor: pointer;
+    transform: scale(1.20);
+}
+.loginbutton a:hover {
+    color: #000;
+}
 
 
 
