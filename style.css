@@ -48,6 +48,11 @@ html{
 .headerMenu ul li a:hover:not(.active) {
     color: #97aef7
 }
+
+.dropdown ul li a{
+    color: #000;
+}
+
 .f-right {
     float: right;
 }
@@ -270,7 +275,6 @@ ul.submenu li a {
 
 .sectionLetter{
     color: black;
-    font-family: 'Libre Baskerville', serif;
     
 }
 .service ul li{
@@ -303,7 +307,9 @@ footer {
 footer p {
     color: rgb(255, 250, 250);
 }
+
+
 /***** End Section *****/
-/***** Modal Withdraw Section *****/
+/***** Acount opening Section *****/
 
 /***** End Section *****/
