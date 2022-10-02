@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="default.css">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
   <title>Northland Bank</title>
 
 </head>
@@ -30,7 +32,18 @@
                     <li><a href="#About">About</a></li>
                     <li><a href="#Services">Services</a></li>
                     <li><a href="">Contact</a></li>
-                    <li><a href="Dashboard.html">Account</a></li>
+                    <li>
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                          Account
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="applicationPage.html">Open Account</a></li>
+                          <li><a class="dropdown-item" href="loginPage.html">E-Login</a></li>
+                          <li><a class="dropdown-item" href="registerPage.html">E-Register</a></li>
+                        </ul>
+                      </div>
+                    </li>
                   </ul>
                 </nav>
               </div>
@@ -50,16 +63,15 @@
         <h1>NORTHLAND BANK</h1><br>
         <div class="container p-5">
           <p><span>"<span> Where Savings and Investing are made Simplier and Better <span>"<span></p>
-            <div class="container p-5 startnow"><button class="loginbutton"><a href="#" >START BANKING WITH US NOW</a></button></div>
+          <div class="container p-5 startnow"><button class="loginbutton"><a href="applicationPage.html">START BANKING
+                WITH US NOW</a></button></div>
         </div>
-        
+
       </div>
     </div>
   </section>
 
   <main id="main">
-    
-    
     <section id="Services" class="bgservice">
       <div class="container servicePadding">
         <div class="row align-items-center plr-100">
@@ -101,13 +113,15 @@
         </div>
       </div>
     </section>
-
     <section id="About" class="backgroundForhome">
       <div class="container servicePadding">
         <div class="row align-items-center plr-100">
           <div class="container" id="center">
-            <h1>ABOUT US<h1>
-                <p> Our company is absolute in giving our clients the best services by offering a hassle-free money transactions. Our aim is to simply provide a dynamic act of securing our customers assets with honesty in exchange for their trust. Making customers be our first priority with the wealthy management and offering incentives that they can get benefits.</p>
+            <h1>ABOUT US</h1>
+            <p> Our company is absolute in giving our clients the best services by offering a hassle-free money
+              transactions. Our aim is to simply provide a dynamic act of securing our customers assets with honesty in
+              exchange for their trust. Making customers be our first priority with the wealthy management and offering
+              incentives that they can get benefits.</p>
           </div>
         </div>
       </div>
