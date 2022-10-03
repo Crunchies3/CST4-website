@@ -92,7 +92,7 @@
                         <div class="row">
                             <div class="col-5">
                                 <div class="form-group">
-                                    <input type="text" name="date_of_birth" class="form-control" placeholder="Date of Birth">
+                                    <input type="date" name="date_of_birth" class="form-control" placeholder="Date of Birth">
                                 </div>
                             </div>
                             <div class="col-5">
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div style="text-align: center;">
-                            <button type="submit" class="btn">Submit</button>
+                            <button type="submit" name ="submit" class="btn">Submit</button>
                         </div>
                     </form>
 
@@ -114,7 +114,10 @@
 
         </div>
     </section>
-
+                                                                            
+    <!-- connecting sa backend ani -->
+    <?php include 'AP_BACKEND.php' ?>
+                                                                            
     <!-- ========== footer Section ========== -->
     <?php include_once 'footer.php'; ?>
     <!-- ========== End Section ========== -->
