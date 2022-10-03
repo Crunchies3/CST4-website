@@ -8,52 +8,12 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="default.css">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-
   <title>Northland Bank</title>
-
 </head>
 
 <body>
   <!-- ========== Nav bar ========== -->
-  <header>
-    <div class="headerArea fixed">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-3 d-flex flex-wrap justify-content-center justify-content-lg-start">
-            <h3>Northland Bank</h3>
-          </div>
-          <div class="col-lg-9 d-flex flex-wrap justify-content-center justify-content-lg-end">
-            <div class="headerRightArea">
-              <div class="headerMenu f-right">
-                <nav>
-                  <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#About">About</a></li>
-                    <li><a href="#Services">Services</a></li>
-                    <li><a href="">Contact</a></li>
-                    <li>
-                      <div class="dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                          Account
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="applicationPage.html">Open Account</a></li>
-                          <li><a class="dropdown-item" href="loginPage.html">E-Login</a></li>
-                          <li><a class="dropdown-item" href="registerPage.html">E-Register</a></li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
+  <?php include_once 'header.php'; ?>
   <!-- ========== End Section ========== -->
   <!-- ========== Dashboard area ========== -->
 
@@ -98,13 +58,11 @@
                   <img src="Pictures/crsl4.jpg" class="d-block w-100" alt="...">
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-                data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-                data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
@@ -128,18 +86,10 @@
     </section>
   </main>
   <!-- ========== End Section ========== -->
-  <!-- ========== footer Section ========== -->
-  <footer class="py-5">
-    <ul class="nav justify-content-center pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">About</a></li>
-    </ul>
-    <p class="text-center">© 2022 Company, Inc</p>
-  </footer>
-  <!-- ========== End Section ========== -->
-</body>
 
+  <!-- ========== footer Section ========== -->
+  <?php include_once 'footer.php'; ?>
+  <!-- ========== End Section ========== -->
+
+</body>
 </html>
