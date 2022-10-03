@@ -30,83 +30,69 @@
                     <h1>Online Account Application Form</h1>
                 </div>
                 <div class="container" style="background-color: white;">
-                    <form action="">
+                    <form action="#">
 
-                        <div class="row1">
-                            <div class="col-5">
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Enter Name"><br>
+                        <div class="main-user-info">
+                            <div class="user-input-box">
+                                <label for="firstName">Fisrt  Name:</label>
+                                    <input type="text" id="firstName" placeholder="Enter First Name" required>
                                 </div>
-                            </div>
+                           <div class="user-input-box">
+                               <label for="lastName">Last  Name:</label>
+                                    <input type="text" id="lastName" placeholder="Enter Last Name" required>
+                                </div>
+                               
+                            <div class="user-input-box">
+                                <label for="emailAdd">Email Address:</label>
+                                    <input type="text" id="emailAdd" placeholder="Enter Email Address" required>
+                                </div>
 
-                            <div class="col-5">
-                                <div class="form-group">
-                                    <select name="sex" id="sex" class="dropbtn;">
-                                        <option value="">Sex</option>
-                                        <option value="Married">Male</option>
-                                        <option value="Divorced">Female</option>
-                                    </select>
+                            <div class="user-input-box">
+                                <label for="phoneNum">Phone Number:</label>
+                                    <input type="text" id="phoneNum" placeholder="Enter Phone Number" required>
+                                </div>
+                            <div class="user-input-box">
+                               <label for="birthdate">Birth Date:</label>
+                                    <input type="text" id="birthdate" placeholder="MM/DD/YYYY" required>
+                              </div>
+                             <div class="user-input-box">
+                                <label for="streetAdd">Street Address:</label>
+                                    <input type="text" id="streetAdd" placeholder="Enter Street Address" required>
+                                </div>  
+                            
+                            <div class="user-input-box">
+                                <label for="barangay">Barangay:</label>
+                                    <input type="text" id="barangay" placeholder="Enter Barangay" required>
+                                </div>            
+                             <div class="user-input-box">
+                                <label for="city">City:</label>
+                                    <input type="text" id="city" placeholder="Enter City" required>
+                                </div>   
+                             <div class="user-input-box">
+                                <label for="province">Province:</label>
+                                    <input type="text" id="province" placeholder="Enter Province" required>
+                                </div>
+                            <div class="user-input-box">
+                                <label for="zipcode">Zip Code:</label>
+                                    <input type="text" id="zipcode" placeholder="Enter Zip Code" required>
+                                </div>   
+                            </div>
+                            <div class="gender-details-box">
+                                <span class="gender-title">Sex:</span>
+                                <div class="gender category">
+                                    <input type="radio" name="gender" id="male">
+                                    <label for="male">Male</label>
+                                    <input type="radio" name="gender" id="female">
+                                    <label for="female">Female</label>
                                 </div>
                             </div>
-                            <div class="col-5">
-                                <div class="form-group">
-                                    <input type="text" name="mobile_number" class="form-control" placeholder="Enter Mobile no.">
-                                </div>
-                            </div>
-                            <div class="col-5">
-                                <div class="form-group">
-                                    <input type="text" name="email" class="form-control" placeholder="Enter Email">
-                                </div>
+                            <div class="format-submit-btn" >
+                                <input type="submit" value="Submit">
                             </div>
                         </div>
                         <div>
-                            <div class="col-5">
-                                <div class="form-group">
-                                    <input type="text" name="full_address" class="form-control" placeholder="Enter Full Address">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="barangay" class="form-control" placeholder="Barangay">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="city" class="form-control" placeholder="City">
-                                </div>
-                            </div>
-
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="province" class="form-control" placeholder="Province">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="zip_code" class="form-control" placeholder="Zip Code">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="form-group">
-                                    <input type="date" name="date_of_birth" class="form-control" placeholder="Date of Birth">
-                                </div>
-                            </div>
-                            <div class="col-5">
-                                <div class="form-group">
-                                    <select name="branch" id="branch" class="dropbtn" style="margin-top: 10px;">
-                                        <option value="">Branch</option>
-                                        <option value="Tagum">Tagum</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="text-align: center;">
-                            <button type="submit" name ="submit" class="btn">Submit</button>
-                        </div>
+                            
+                    
                     </form>
 
                 </div>
