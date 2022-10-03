@@ -43,29 +43,19 @@ html{
 .headerMenu ul li a {
     text-decoration: none;
     font-size: 14px;
-    color: lightblue;
+    color: #fff
 }
 .headerMenu ul li a:hover:not(.active) {
-    color: black;
-    background-color: darkgray;
-        
+    color: #97aef7
 }
 
 .dropdown ul li a{
-    color: black;
-    font-size: 15px;
-    font-family: Verdana;
-    padding: 10px;   
-
+    color: #000;
 }
 
 .f-right {
     float: right;
 }
-.form-control {
-    font-size: 15px;
-}
-
 /***** End Section *****/
 /***** Dashboard styles *****/
 .dashboardArea {
@@ -323,14 +313,3 @@ footer p {
 /***** Acount opening Section *****/
 
 /***** End Section *****/
-
-/***** Application Page*****/
-
-.form-control {
-    text-align: center;
-    margin-left: 30px;
-    margin: 5px;
-}
-.row1 {
-    text-align: center;
-}
