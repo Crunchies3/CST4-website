@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <title>PENDING CUSTOMERS</title>
 </head>
@@ -26,14 +27,14 @@
         <th>BRANCH</th>
         <th>APPLICATION NUMBER</th>
         <th>DATE CREATED</th>
+        <th>ACTION</th>
 
         <?php
         if (isset($_POST['search_application'])) {
 
             if (empty($_POST['application_num'])) {
                 echo '<script>alert("Please enter application number")</script>';
-            }
-             else {
+            } else {
                 //pangitaon niya ang match na search input ug application number sa user sa database.
                 $application_num = $_SESSION['application_num'] = $_POST['application_num'];
                 $sql = "SELECT*FROM pending_accounts WHERE application_num = '$application_num' ";
@@ -57,6 +58,10 @@
                     <td>' . $row['branch'] . '</td>
                     <td>' . $row['application_num'] . '</td>
                     <td>' . $row['date_created'] . '</td>
+                    <td>
+                        <button class="btn btn-primary"><a class="text-light" href="approve.php">Apporve</a></button>
+                        <button class="btn btn-danger"><a href="">Delete</a></button>
+                    </td>
 					</tr>';
                     }
                 } else {
@@ -65,17 +70,15 @@
                 }
             }
         }
-
         ?>
-
-
     </table>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
         <input type="submit" name="approve_cust" value="Approve">
     </form>
 </body>
+
 </html>
- 
+
 
 
 <?php
@@ -113,7 +116,7 @@ if (isset($_POST['approve_cust'])) {
             $ac_opening_date = date("d/m/y h:i:s A");
 
             $conn->autocommit(FALSE);
-            
+
             //pag prepare ug assign na sa mga values sa pending account table padulong sa main customer table
             $sql1 = "INSERT INTO customers(name,sex,mobile_number,email,full_address,zip_code,date_of_birth,branch,customer_id)
             VALUES('$name','$sex','$mobile_number','$email','$full_address','$zip_code','$date_of_birth','$branch','$customer_id')";
