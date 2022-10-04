@@ -23,7 +23,7 @@
         <h1>NORTHLAND BANK</h1><br>
         <div class="container p-5">
           <p><span>"<span> Where Savings and Investing are made Simplier and Better <span>"<span></p>
-          <div class="container p-5 startnow"><button class="loginbutton"><a href="applicationPage.html">START BANKING
+          <div class="container p-5 startnow"><button class="loginbutton"><a href="applicationPage.php">START BANKING
                 WITH US NOW</a></button></div>
         </div>
 

@@ -316,7 +316,7 @@ footer p {
 
 /***** Application Page *****/
 
-.container {
+/* .container {
     width: 95%;
     max-width: 400%;
     background: #DFF6FF;
@@ -324,7 +324,7 @@ footer p {
     margin: 0 28px;
     border-radius: 10px;
     box-shadow: inset -2px 2px 2px whitesmoke;
-}
+} */
 .main-user-info {
     display: flex;
     flex-wrap: wrap;
