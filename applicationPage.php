@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <select name="sex" id="sex" class="dropbtn" style="margin-top: 10px;">
                                         <option value="">Sex</option>
-                                        <option value="Married">Male</option>
+                                    <option value="Married">Male</option>
                                         <option value="Divorced">Female</option>
                                     </select>
                                 </div>
@@ -109,7 +109,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- connecting sa backend ani -->
     <?php require 'AP_BACKEND.php'; ?>
 
