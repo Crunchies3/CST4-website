@@ -14,33 +14,9 @@
 
 <body>
     <!-- ========== Nav bar ========== -->
-    <header>
-        <div class="headerArea fixed">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 d-flex flex-wrap justify-content-center justify-content-lg-start">
-                        <h3>Northland Bank</h3>
-                    </div>
-                    <div class="col-lg-9 d-flex flex-wrap justify-content-center justify-content-lg-end">
-                        <div class="headerRightArea">
-                            <div class="headerMenu f-right">
-                                <nav>
-                                    <ul>
-                                        <li><a href="index.php">Home</a></li>
-                                        <li><a href="">About</a></li>
-                                        <li><a href="">Services</a></li>
-                                        <li><a href="">Contact</a></li>
-                                        <li><a href="Dashboard.php">Account</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include_once 'D_header.php'; ?>
     <!-- ========== End Section ========== -->
+    
     <!-- ========== Dashboard area ========== -->
     <section>
         <div class="dashboardArea pt-150 pb-100">
@@ -119,16 +95,7 @@
     </section>
 
     <!-- ========== footer Section ========== -->
-    <footer class="py-5">
-        <ul class="nav justify-content-center pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">About</a></li>
-        </ul>
-        <p class="text-center">© 2022 Company, Inc</p>
-    </footer>
+    <?php include_once 'D_footer.php'; ?>
     <!-- ========== End Section ========== -->
 </body>
 
