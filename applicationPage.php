@@ -23,88 +23,72 @@
     <section>
         <div class="pt-150 pb-100 dashboardArea">
             <div class="container">
-                <div class="col-lg-12 text-center">
-                    <h1>Online Account Application Form</h1>
-                </div>
-                <div class="container" style="background-color: white;">
-                    <form action="" method="post">
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Name">
+                <div class="col-lg-6 offset-lg-3" style="background-color: white;">
+                    <div class="col-lg-12 text-center" style="color: #37517eeb;">
+                        <h1>ONLINE APPLICATION FORM</h1>
+                    </div>
+                    <div class="container" style="background-color: white; margin-top: 50px;">
+                        <div class="container applicationForm">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="name" class="form-control" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div style="text-align:center;">
+                                            <div class="form-group">
+                                                <select name="sex" id="sex" class="dropbtn form-control">
+                                                    <option value="" style="color: red;">Sex</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <select name="sex" id="sex" class="dropbtn" style="margin-top: 10px;">
-                                        <option value="">Sex</option>
-                                    <option value="Married">Male</option>
-                                        <option value="Divorced">Female</option>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="mobile_number" class="form-control" placeholder="Mobile no.">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="email" class="form-control" placeholder="Email">
+                                        </div>
+                                    </div>
+
                                 </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="mobile_number" class="form-control"
-                                        placeholder="Mobile no.">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input type="text" name="full_address" class="form-control" placeholder="Full Address">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="email" class="form-control" placeholder="Email">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <input onfocus="(this.type='date')" type="text" name="date_of_birth" class="form-control" placeholder="Date of Birth" id="date">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div style="text-align:center;">
+                                            <div class="form-group">
+                                                <select name="branch" id="branch" class="dropbtn form-control" style="margin-top: 10px;">
+                                                    <option value="">Branch</option>
+                                                    <option value="Tagum">Tagum</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <div style="text-align: center;">
+                                    <button type="submit" class="btn submit-btn" name="submit">Submit</button>
+                                </div>
+                            </form>
                         </div>
-                        <div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input type="text" name="full_address" class="form-control"
-                                        placeholder="Full Address">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="barangay" class="form-control" placeholder="Barangay">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="city" class="form-control" placeholder="City">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="province" class="form-control" placeholder="Province">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <input type="text" name="zip_code" class="form-control" placeholder="Zip Code">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <input type="date" name="date_of_birth" class="form-control"
-                                        placeholder="Date of Birth">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <select name="branch" id="branch" class="dropbtn" style="margin-top: 10px;">
-                                        <option value="">branch</option>
-                                        <option value="Tagum">Tagum</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="text-align: center;">
-                            <button type="submit" class="btn" name="submit">Submit</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

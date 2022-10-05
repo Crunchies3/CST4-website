@@ -19,13 +19,14 @@
                                     <li><a href="index.php#Contact">Contact</a></li>
                                     <li>
                                         <div class="dropdown">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                            <button type="button" style="color: white; margin-top: -3px;" class="btn dropdown-toggle" data-bs-toggle="dropdown">
                                                 Account
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="applicationPage.php">Open Account</a></li>
                                                 <li><a class="dropdown-item" href="loginPage.php">E-Login</a></li>
                                                 <li><a class="dropdown-item" href="registerPage.php">E-Register</a></li>
+                                                <li><a class="dropdown-item" href="admin_login.php">Admin Login</a></li>
                                             </ul>
                                         </div>
                                     </li>

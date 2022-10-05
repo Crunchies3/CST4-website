@@ -1,14 +1,14 @@
-<?php include_once 'config.php'; 
+<?php include_once 'config.php';
 
 session_start();
-if(isset($_SESSION['client_login']) && $_SESSION['client_login'] === true) {
+if (isset($_SESSION['client_login']) && $_SESSION['client_login'] === true) {
     header("location: dashboard.php");
     exit;
 }
 
 if (isset($_POST['submit'])) {
 
-    if(isset($_POST['account_number'])){
+    if (isset($_POST['account_number'])) {
         $account_number = $_POST['account_number'];
         $password = $_POST['password'];
     }
@@ -17,11 +17,10 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql);
     $row = $result->fetch_assoc();
 
-    if($acount_number != $row['customer_id'] && $password != $row['password']){
-		//pag dili mag match kay mag error
-		echo '<script>alert("Incorrect Id/Password.")</script>';
-		}
-    else{
+    if ($acount_number != $row['customer_id'] && $password != $row['password']) {
+        //pag dili mag match kay mag error
+        echo '<script>alert("Incorrect Id/Password.")</script>';
+    } else {
         //declare nato ni globally kay gamitunon ni admin_header.php nato
         $_SESSION['client_login'] = true;
         $_SESSION['name'] = $row['name'];
@@ -58,26 +57,26 @@ if (isset($_POST['submit'])) {
     <section>
         <div class="pt-150 pb-100 dashboardArea">
             <div class="container">
-                <div class="col-lg-12 text-center">
-                    <h1>Log In</h1>
-                </div>
-                <div class="container" style="background-color: white;">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-                        <div class="mb-3" style="margin-top: 20px;">
-                            <label>Account Number</label>
-                            <input style="margin-top: 10px;" type="text" name="account_number" class="form-control">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="col-lg-12 text-center" style="color: #37517eeb;">
+                        <h1>LOG IN</h1>
+                    </div>
+                    <div class="container" style="background-color: white;">
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                            <div class="mb-3" style="margin-top: 20px;">
+                                <input style="margin-top: 10px;" type="text" name="account_number" class="form-control" placeholder="Account Number">
 
-                        </div>
-                        <div class="mb-3">
-                            <label>Password</label>
-                            <input style="margin-top: 10px;" type="password" name="password" class="form-control">
-                            <div style="margin-top: 20px;">
-                                <button type="submit" class="btn buttColor" name="submit">Submit</button>
                             </div>
-                    </form>
+                            <div class="mb-3">
+                                <input style="margin-top: 10px;" type="password" name="password" class="form-control" placeholder="Password">
+                                <div style="margin-top: 20px; text-align: center;">
+                                    <button type="submit" class="btn submit-btn " name="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-
         </div>
     </section>
 
