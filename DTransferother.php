@@ -1,3 +1,47 @@
+<?php
+include 'config.php';
+session_start();
+$sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
+$account_number = $_SESSION['account_number'];
+$result = mysqli_query($conn, $sql);
+$row = $result->fetch_assoc();
+
+if (isset($_POST['submit_other_bank'])) {
+    if (isset($_POST['transfer_amount'])) {
+        $transfer_amount = $_POST['transfer_amount'];
+    }
+        $total_debit = $row['total_debit'] + $transfer_amount;
+        $net_balance = $row['net_balance'] - $transfer_amount;
+
+        $transaction_id = mt_rand(100, 999) . mt_rand(1000, 9999) . mt_rand(10, 99);
+
+        date_default_timezone_set('Asia/Kolkata');
+        $transaction_date = date("d/m/y h:i:s A");
+
+        $remark = "Other Bank Transfer";
+
+        $description = "Other Bank Transfer";
+
+        $conn->autocommit(FALSE);
+
+        $sql1 = "UPDATE customers SET net_balance = '$net_balance' WHERE customer_id = '$account_number' ";
+        $sql2 = "UPDATE customers SET total_debit = '$total_debit' WHERE customer_id = '$account_number' ";
+
+        $sql3 = "INSERT INTO passbook_$account_number(Transaction_id,Transaction_date,Description,Cr_amount,Dr_amount,Net_Balance,Remark)
+        VALUES('$transaction_id','$transaction_date','$description','0','$total_debit','$net_balance','$remark')";
+
+        if ($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE && $conn->query($sql3) == TRUE) {
+            $conn->commit();
+            echo '<script>alert("Bank Transfer Successfull")
+                 location="WithdrawPage.php"</script>';
+        } else {
+            echo '<script>alert("Transaction failed\n\nReason:\n\n' . $conn->error . '")</script>';
+            $conn->rollback();
+        }
+    
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +69,7 @@
                         <div class="sidebaArea">
                             <div class="sidebarTopArea text-center">
                                 <div class="userName">
-                                    <h3>Cyril Charles O Alvez</h3>
+                                    <h3><?php echo $row['name']; ?></h3>
                                 </div>
                             </div>
                             <div class="slidebarNavArea">
@@ -67,29 +111,29 @@
 
                             </div>
                             <div class="container">
-                                <form action="">
+                                <form method="post">
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Country</label>
-                                        <input type="text" style="margin-top: 10px;" class="form-control">
+                                        <input type="text" style="margin-top: 10px;" class="form-control" name="country_transfer">
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Bank</label>
-                                        <input type="text" style="margin-top: 10px;" class="form-control">
+                                        <input type="text" style="margin-top: 10px;" class="form-control" name="bank_name">
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Account Holder Name</label>
-                                        <input type="text" style="margin-top: 10px;" class="form-control">
+                                        <input type="text" style="margin-top: 10px;" class="form-control" name="holder_name">
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Account Number</label>
-                                        <input type="text" style="margin-top: 10px;" class="form-control">
+                                        <input type="text" style="margin-top: 10px;" class="form-control" name="account_number">
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Transfer Amount</label>
-                                        <input type="text" style="margin-top: 10px;" class="form-control">
+                                        <input type="text" style="margin-top: 10px;" class="form-control" name="transfer_amount">
                                     </div>
                                     <div style="margin-top: 20px;">
-                                        <button type="submit" class="btn buttColor">Submit</button>
+                                        <button type="submit" class="btn buttColor" name="submit_other_bank">Submit</button>
                                     </div>
                                 </form>
                             </div>
