@@ -13,20 +13,18 @@ if (isset($_POST['submit'])) {
         $password = $_POST['password'];
     }
 
-    $sql = "SELECT * FROM customers Where customer_id ='$account_number'";
+    $sql = "SELECT * FROM customers WHERE customer_id ='$account_number'";
     $result = mysqli_query($conn, $sql);
-    $row = $result->fetch_assoc();
 
-    if ($acount_number != $row['customer_id'] && $password != $row['password']) {
-        //pag dili mag match kay mag error
-        echo '<script>alert("Incorrect Id/Password.")</script>';
-    } else {
-        //declare nato ni globally kay gamitunon ni admin_header.php nato
-        $_SESSION['client_login'] = true;
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['account_number'] = $row['customer_id'];
-        header('location:dashboard.php');
+    while ($row = $result->fetch_assoc()) {
+        if ($account_number == $row['customer_id'] && $password == $row['password']) {
+            $_SESSION['client_login'] = true;
+            $_SESSION['name'] = $row['name'];
+            $_SESSION['account_number'] = $row['customer_id'];
+            header('location:dashboard.php');   
+        } 
     }
+    echo '<script>alert("iNCORRECT DETAILS")</script>';
 }
 
 ?>

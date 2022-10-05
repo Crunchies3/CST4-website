@@ -9,7 +9,6 @@ if(isset($_POST['submit'])){
     $mobile_number = $_POST['mobile_number'];
     $email = $_POST['email'];
     $full_address = $_POST['full_address'];
-    $zip_code = $_POST['zip_code'];
     $date_of_birth = $_POST['date_of_birth'];
     $branch = $_POST['branch'];
 
@@ -18,8 +17,8 @@ if(isset($_POST['submit'])){
 
 
     //insert sa user credentials padulong pending_acc data base
-    $sql = "INSERT INTO pending_accounts (name,sex,mobile_number,email,full_address,zip_code,date_of_birth,branch,application_num)
-    VALUES ('$name','$sex','$mobile_number','$email','$full_address','$zip_code','$date_of_birth','$branch','$application_num')";
+    $sql = "INSERT INTO pending_accounts (name,sex,mobile_number,email,full_address,date_of_birth,branch,application_num)
+    VALUES ('$name','$sex','$mobile_number','$email','$full_address','$date_of_birth','$branch','$application_num')";
 
     //pagsuccessful ang insert padulong sa pending_accounts
     if($conn->query($sql) == true){

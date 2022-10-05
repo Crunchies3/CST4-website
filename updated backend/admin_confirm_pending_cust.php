@@ -15,7 +15,6 @@ if (isset($_GET['approve_cust'])) {
         $mobile_number = $row['mobile_number'];
         $email = $row['email'];
         $full_address = $row['full_address'];
-        $zip_code = $row['zip_code'];
         $date_of_birth = $row['date_of_birth'];
         $branch = $row['branch'];
 
@@ -37,8 +36,8 @@ if (isset($_GET['approve_cust'])) {
             $conn->autocommit(FALSE);
 
             //pag prepare ug assign na sa mga values sa pending account table padulong sa main customer table
-            $sql1 = "INSERT INTO customers(name,sex,mobile_number,email,full_address,zip_code,date_of_birth,branch,customer_id)
-            VALUES('$name','$sex','$mobile_number','$email','$full_address','$zip_code','$date_of_birth','$branch','$customer_id')";
+            $sql1 = "INSERT INTO customers(name,sex,mobile_number,email,full_address,date_of_birth,branch,customer_id)
+            VALUES('$name','$sex','$mobile_number','$email','$full_address','$date_of_birth','$branch','$customer_id')";
 
             //since na add naman ang pending user sa main oras na para idelete ang kato na user sa pending accounts
             $sql2 = "DELETE FROM pending_accounts WHERE application_num = '$application_num' ";
