@@ -316,28 +316,9 @@ footer p {
 
 /***** Application Page *****/
 
-.container {
-    width: 95%;
-    max-width: 400%;
-    background: #DFF6FF;
-    padding: 20px;
-    margin: 15px 28px;
-    border-radius: 10px;
-    box-shadow: inset -2px 2px 2px whitesmoke;
-}
 .form-control {
     padding-top: 10px;
     margin: 8px;
     
 }
-.btn {
-    margin-top: 30px;
-   background-color: #97aef7;
-   border: none;
-}
-.dropbtn {
-    margin: 2x;
-    border-radius: 5px;
-    padding: 4px;
 
-}
