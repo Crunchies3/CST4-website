@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql);
 
     while ($row = $result->fetch_assoc()) {
-        if ($acount_number == $row['customer_id'] && $password == $row['password']) {
+        if ($account_number == $row['customer_id'] && $password == $row['password']) {
             $_SESSION['client_login'] = true;
             $_SESSION['name'] = $row['name'];
             $_SESSION['account_number'] = $row['customer_id'];
