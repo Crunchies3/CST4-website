@@ -26,6 +26,7 @@
                                                 <li><a class="dropdown-item" href="applicationPage.php">Open Account</a></li>
                                                 <li><a class="dropdown-item" href="loginPage.php">E-Login</a></li>
                                                 <li><a class="dropdown-item" href="registerPage.php">E-Register</a></li>
+                                                <li><a class="dropdown-item" href="admin_login.php">Admin Login</a></li>
                                             </ul>
                                         </div>
                                     </li>
