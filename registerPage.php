@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
         $password = $_POST['password'];
 
     }
-    $sql = "SELECT * FROM customers WHERE name = $account_holder";
+    $sql = "SELECT * FROM customers WHERE name = '$account_holder'";
     $result = mysqli_query($conn, $sql);
     $row = $result->fetch_assoc();
     if($account_number == $row['customer_id'] && $phone_number == $row['mobile_number'] && $birthdate == $row['date_of_birth']) {
