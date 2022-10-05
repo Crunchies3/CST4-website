@@ -27,7 +27,7 @@
                     <h1>Online Account Application Form</h1>
                 </div>
                 <div class="container" style="background-color: white;">
-                    <form action="">
+                    <form action="" method="post">
                         <div class="row">
                             <div class="col-3">
                                 <div class="form-group">
@@ -88,7 +88,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input type="text" name="date_of_birth" class="form-control"
+                                    <input type="date" name="date_of_birth" class="form-control"
                                         placeholder="Date of Birth">
                                 </div>
                             </div>

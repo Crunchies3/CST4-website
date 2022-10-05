@@ -1,3 +1,22 @@
+<?php
+// Initialize the session
+include 'config.php';
+
+session_start();
+
+
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["client_login"]) || $_SESSION["client_login"] !== true) {
+    header("location: LoginPage.php");
+    exit;
+}
+
+$sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
+$result = mysqli_query($conn,$sql);
+$row = $result->fetch_assoc();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +45,7 @@
             <div class="sidebaArea">
               <div class="sidebarTopArea text-center">
                 <div class="userName">
-                  <h3>NAME</h3>
+                  <h3><?php echo $row['name'];?></h3>
                 </div>
               </div>
               <div class="slidebarNavArea">
@@ -55,7 +74,7 @@
                     </li>
                     <li class="navItem submenu"><a href="DSupport.php">Support</a></li>
                     <li class="navItem submenu"><a href="">Settings</a></li>
-                    <li class="navItem"><a href="">Logout</a></li>
+                    <li class="navItem"><a href="client_logout.php">Logout</a></li>
                   </ul>
                 </nav>
               </div>
@@ -71,7 +90,7 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="f-right">
-                    <p>Account Number: 1234567</p>
+                    <p>Account Number: <?php echo $row['customer_id'] ?></p>
                   </div>
                 </div>
               </div>
@@ -107,7 +126,6 @@
                           </div>
                         </div>
                         <div class="col-lg-4">
-
                         </div>
                         <div class="row">
                           <div class="col-lg-12">
@@ -128,7 +146,6 @@
                           </div>
                         </div>
                         <div class="col-lg-4">
-
                         </div>
                         <div class="row">
                           <div class="col-lg-12">

@@ -36,12 +36,12 @@ if (isset($_SESSION['staff_login'])) {
 include 'config.php';
 if(isset($_POST['staff_login-btn'])){
     
-    if(isset($_POST['staff_id'])){
+    if(isset($_POST['admin_username'])){
         $admin_username = $_POST['admin_username'];
         $admin_password = $_POST['admin_password'];
     }
     //pag pangita if mag match ang admin input ug password sa database
-    $sql = "SELECT*FROM admin WHERE username = '$admin_username' AND password ='$admin_password' ";
+    $sql = "SELECT*FROM admin WHERE username = '$admin_username'";
     $result = $conn->query($sql);
     //pagkuha sa mga elements sa database
     $row = $result->fetch_assoc();

@@ -1,3 +1,42 @@
+<?php include_once 'config.php'; 
+
+session_start();
+if(isset($_SESSION['client_login']) && $_SESSION['client_login'] === true) {
+    header("location: dashboard.php");
+    exit;
+}
+
+if (isset($_POST['submit'])) {
+
+    if(isset($_POST['account_number'])){
+        $account_number = $_POST['account_number'];
+        $password = $_POST['password'];
+    }
+
+    $sql = "SELECT * FROM customers Where customer_id ='$account_number'";
+    $result = mysqli_query($conn, $sql);
+    $row = $result->fetch_assoc();
+
+    if($acount_number != $row['customer_id'] && $password != $row['password']){
+		//pag dili mag match kay mag error
+		echo '<script>alert("Incorrect Id/Password.")</script>';
+		}
+    else{
+        //declare nato ni globally kay gamitunon ni admin_header.php nato
+        $_SESSION['client_login'] = true;
+        $_SESSION['name'] = $row['name'];
+        $_SESSION['account_number'] = $row['customer_id'];
+        header('location:dashboard.php');
+    }
+}
+
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,17 +65,17 @@
                     <h1>Log In</h1>
                 </div>
                 <div class="container" style="background-color: white;">
-                    <form action="">
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                         <div class="mb-3" style="margin-top: 20px;">
-                            <label>Email</label>
-                            <input style="margin-top: 10px;" type="text" name="username" class="form-control">
+                            <label>Account Number</label>
+                            <input style="margin-top: 10px;" type="text" name="account_number" class="form-control">
 
                         </div>
                         <div class="mb-3">
                             <label>Password</label>
-                            <input style="margin-top: 10px;" type="text" name="username" class="form-control">
+                            <input style="margin-top: 10px;" type="password" name="password" class="form-control">
                             <div style="margin-top: 20px;">
-                                <button type="submit" class="btn buttColor">Submit</button>
+                                <button type="submit" class="btn buttColor" name="submit">Submit</button>
                             </div>
                     </form>
                 </div>
