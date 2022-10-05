@@ -26,7 +26,7 @@
                         <div class="sidebaArea">
                             <div class="sidebarTopArea text-center">
                                 <div class="userName">
-                                    <h3>name</h3>
+                                    <h3><?php echo "$_SESSION[admin_name]" ?></h3>
                                 </div>
                             </div>
                             <div class="slidebarNavArea">
@@ -36,7 +36,7 @@
                                         <li class="navItem submenu"><a href="admin_view_customer.php">View User</a></li>
                                         <li class="navItem submenu"><a href="admin_pending_customers.php">View Pending Customer</a></li>
                                         <li class="navItem submenu"><a href="">Settings</a></li>
-                                        <li class="navItem"><a href="client_logout.php">Logout</a></li>
+                                        <li class="navItem"><a href="admin_logout.php">Logout</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -79,8 +79,8 @@
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="count">
-                                                        <h4>10</h4>
-                                                    </div>
+                                                        <h4><?php echo "$_SESSION[count_pending]"; echo "$_SESSION[admin_name]"?></h4>
+                                                    </div> 
                                                 </div>
                                                 <div class="col-lg-4">
                                                 </div>

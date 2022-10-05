@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['admin_login'])) {
+    
+}header('location: admin_login.php');
+?>
+
 <!DOCTYPE html>
 <html>
 

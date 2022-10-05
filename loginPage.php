@@ -27,10 +27,8 @@ if (isset($_POST['submit'])) {
     echo '<script>alert("iNCORRECT DETAILS")</script>';
 }
 
+
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 

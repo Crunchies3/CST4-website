@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-if (isset($_SESSION['staff_login'])) {
 
-    //sudlan ra nato ni sya pag mahuman na natong backend murag controller ni sa login session  
+if (isset($_SESSION['admin_login'])) {
+    header('location: admin_dashboard.php');
 }
 ?>
 
@@ -72,6 +72,7 @@ if (isset($_POST['staff_login-btn'])) {
             $_SESSION['admin_login'] = true;
             $_SESSION['admin_name'] = $row['name'];
             $_SESSION['admin_username'] = $row['username'];
+
             header('location:admin_dashboard.php');
         }
     }
