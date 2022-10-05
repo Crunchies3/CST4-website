@@ -316,68 +316,28 @@ footer p {
 
 /***** Application Page *****/
 
-/* .container {
+.container {
     width: 95%;
     max-width: 400%;
     background: #DFF6FF;
-    padding: 30px;
-    margin: 0 28px;
+    padding: 20px;
+    margin: 15px 28px;
     border-radius: 10px;
     box-shadow: inset -2px 2px 2px whitesmoke;
-} */
-.main-user-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 3px 0;
 }
-.user-input-box:nth-child(2n){
-    justify-content: end;
-}
-.user-input-box {
-    display: flex;
-    flex-wrap: wrap;
-    width: 40%;
-    padding-bottom: 15px;
-}
-.user-input-box label {
-    width: 100%;
-    color: black;
-    font-size: 20px;
-    font-weight: 60%;
-    margin: 2px 0;
-}
-.user-input-box input {
-    height: 60%;
-    width: 100%;
-    border-radius: 7px;
-    outline:none;
-    border: 1px solid grey ;
-    padding: 0 20px;
-}
-.gender-title {
-    color: #000;
-    font-size: 20px;
-    font-weight: 400;
-    border-bottom: 1px solid white;
-}
-.gender-category {
-    margin: 20px;
-    color: #000;
-} 
-.gender-category label {
-    padding: 0 20px 0 5px;
-}
-.format-submit-btn {
-    cursor: pointer;
-}
-.format-submit-btn input {
-    display: block;
-    width: 20%;
+.form-control {
+    padding-top: 10px;
+    margin: 8px;
     
-    margin-top: 10px;
-    font-size: 20px;
-    padding: 7px;
-    border: none;
-    
+}
+.btn {
+    margin-top: 30px;
+   background-color: #97aef7;
+   border: none;
+}
+.dropbtn {
+    margin: 2x;
+    border-radius: 5px;
+    padding: 4px;
+
 }
