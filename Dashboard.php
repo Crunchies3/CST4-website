@@ -7,12 +7,12 @@ session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["client_login"]) || $_SESSION["client_login"] !== true) {
-    header("location: LoginPage.php");
-    exit;
+  header("location: LoginPage.php");
+  exit;
 }
-
-$sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
-$result = mysqli_query($conn,$sql);
+$account_number = $_SESSION['account_number'];
+$sql = "SELECT * FROM customers Where customer_id = '$account_number'";
+$result = mysqli_query($conn, $sql);
 $row = $result->fetch_assoc();
 ?>
 
@@ -45,7 +45,7 @@ $row = $result->fetch_assoc();
             <div class="sidebaArea">
               <div class="sidebarTopArea text-center">
                 <div class="userName">
-                  <h3><?php echo $row['name'];?></h3>
+                  <h3><?php echo $row['name']; ?></h3>
                 </div>
               </div>
               <div class="slidebarNavArea">
@@ -57,11 +57,7 @@ $row = $result->fetch_assoc();
                     <li class="navItem submenu">
                       <a href="DTransferown.php">Transfer
                         <span class="pull-right-container">
-                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            aria-hidden="true" focusable="false" width="1em" height="1em"
-                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" class="iconify"
-                            data-icon="dashicons:arrow-right-alt2" data-inline="false"
-                            style="transform: rotate(360deg);">
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" class="iconify" data-icon="dashicons:arrow-right-alt2" data-inline="false" style="transform: rotate(360deg);">
                             <path fill="currentColor" d="m6 15l5-5l-5-5l1-2l7 7l-7 7z">
                             </path>
                           </svg>
@@ -101,7 +97,7 @@ $row = $result->fetch_assoc();
                       <div class="row">
                         <div class="col-lg-8">
                           <div class="count">
-                            <h4>P 100000</h4>
+                            <h4>P<br><?php echo $row['net_balance']; ?></h4>
                           </div>
                         </div>
                         <div class="col-lg-4">
@@ -122,7 +118,7 @@ $row = $result->fetch_assoc();
                       <div class="row">
                         <div class="col-lg-8">
                           <div class="count">
-                            <h4>P 100000</h4>
+                            <h4>P<br><?php echo $row['total_credit']; ?></h4>
                           </div>
                         </div>
                         <div class="col-lg-4">
@@ -130,7 +126,7 @@ $row = $result->fetch_assoc();
                         <div class="row">
                           <div class="col-lg-12">
                             <div class="balanceLabel">
-                              <p>Total Balance</p>
+                              <p>Total Deposit</p>
                             </div>
                           </div>
                         </div>
@@ -142,7 +138,7 @@ $row = $result->fetch_assoc();
                       <div class="row">
                         <div class="col-lg-8">
                           <div class="count">
-                            <h4>P 100000</h4>
+                            <h4>P<br><?php echo $row['total_debit']; ?></h4>
                           </div>
                         </div>
                         <div class="col-lg-4">
@@ -150,7 +146,7 @@ $row = $result->fetch_assoc();
                         <div class="row">
                           <div class="col-lg-12">
                             <div class="balanceLabel">
-                              <p>Total Balance</p>
+                              <p>Total Withdraw</p>
                             </div>
                           </div>
                         </div>
@@ -174,27 +170,35 @@ $row = $result->fetch_assoc();
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Account Number</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Balance</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Date / Time</th>
+                        <th scope="col">TX Number</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Credit Amount</th>
+                        <th scope="col">Debit Amount</th>
+                        <th scope="col">Net Balance</th>
+                        <th scope="col">Remark</th>
+                        <th scope="col">Transaction Date</th>
                       </tr>
                     </thead>
                     <tbody class="transactions">
-                      <tr>
-                        <td colspan="8" class="text-center">No Data</td>
-                      </tr>
-                      <tr>
-                        <td colspan="8" class="text-center">No Data</td>
-                      </tr>
-                      <tr>
-                        <td colspan="8" class="text-center">No Data</td>
-                      </tr>
-                      <tr>
-                        <td colspan="8" class="text-center">No Data</td>
-                      </tr>
+                      <?php
+                      $sql1 = "SELECT*FROM passbook_$account_number";
+                      $result = $conn->query($sql1);
+                      if ($result->num_rows > 0){
+                        $Sl_no = 1;
+                        while ($row = $result->fetch_assoc()){
+                          echo'<tr>
+                          <td>' . $Sl_no++ . '</td>
+                          <td>' . $row['Transaction_id'] . '</td>
+                          <td>' . $row['Description'] . '</td>
+                          <td>' . $row['Cr_amount'] . '</td>
+                          <td>' . $row['Dr_amount'] . '</td>
+                          <td>' . $row['Net_Balance'] . '</td>
+                          <td>' . $row['Remark'] . '</td>
+                          <td>' . $row['Transaction_date'] . '</td>                                   
+                          </tr>';
+                        }
+                      }
+                      ?>                      
                     </tbody>
                   </table>
                 </div>
