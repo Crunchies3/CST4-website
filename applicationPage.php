@@ -20,8 +20,8 @@
     <!-- ========== End Section ========== -->
 
     <!-- ========== Dashboard area ========== -->
-    <section>
-        <div class="pt-150 pb-100 dashboardArea" style="padding-bottom: 160px; padding-top: 163px;">
+    <section class="dashboardArea">
+        <div class="pt-150 pb-100">
             <div class="container">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="col-lg-12 text-center" style="color: #37517eeb;">
@@ -40,7 +40,7 @@
                                         <div style="text-align:center;">
                                             <div class="form-group" >
                                                 <select name="sex" id="sex" class="dropbtn form-control">
-                                                    <option value="" style="color: red;">Sex</option>
+                                                    <option value="">Sex</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                 </select>

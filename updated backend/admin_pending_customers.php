@@ -35,7 +35,7 @@
                                         <li class="navItem"><a href="admin_view_customer.php">View User</a></li>
                                         <li class="navItem active"><a href="admin_pending_customers.php">View Pending Customer</a></li>
                                         <li class="navItem"><a href="">Settings</a></li>
-                                        <li class="navItem"><a href="client_logout.php">Logout</a></li>
+                                        <li class="navItem"><a href="admin_logout.php">Logout</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -70,9 +70,6 @@
                                                     <th>Branch</th>
                                                     <th>Date Created</th>
                                                     <th>Actions</th>
-
-
-
                                                 </tr>
                                             </thead>
                                             <tbody class="transactions">
@@ -153,6 +150,7 @@
             </div>
         </div>
     </section>
+    <?php include_once'admin_footer.php';?>
 
 </body>
 

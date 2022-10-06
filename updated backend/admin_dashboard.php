@@ -1,4 +1,36 @@
-<?php session_start();  ?>
+<?php session_start();
+if (isset($_SESSION['admin_login'])) {
+} else header('location: admin_login.php');
+
+include_once 'config.php';
+
+$sql = "SELECT*FROM pending_accounts ";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    //murag iterator rani sya taga value +1
+    $Sl_no = 1;
+    //displaying sa content sa table na nasearch
+    while ($row = $result->fetch_assoc()) {
+        $application_num = $row['application_num'];
+        $Sl_no++;
+    }
+    $_SESSION["pend_count"] = $Sl_no - 1;
+}
+
+
+$sql = "SELECT*FROM customers";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $Sl_no = 1;
+    while ($row = $result->fetch_assoc()) {
+        $customer_id = $row['customer_id'];
+        $Sl_no++;
+    }
+    $_SESSION["user_count"] = $Sl_no - 1;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +92,7 @@
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="count">
-                                                        <h4>3</h4>
+                                                        <h4><?php echo "$_SESSION[user_count]" ?></h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -81,8 +113,8 @@
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="count">
-                                                        <h4><?php echo "$_SESSION[admin_name]"?></h4>
-                                                    </div> 
+                                                        <h4><?php echo "$_SESSION[pend_count]" ?></h4>
+                                                    </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                 </div>
@@ -96,7 +128,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <br>
                             </div>

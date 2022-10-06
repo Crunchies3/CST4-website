@@ -70,8 +70,8 @@ if (isset($_POST['submit'])) {
 
     <!-- ========== Dashboard area ========== -->
 
-    <section>
-        <div class="pt-150 pb-100 dashboardArea" style="padding-bottom: 226px; padding-top: 225px;">
+    <section class="dashboardArea">
+        <div class="pt-150 pb-100">
             <div class="container">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="col-lg-12 text-center" style="color: #37517eeb;">
