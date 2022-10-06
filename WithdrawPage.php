@@ -1,3 +1,53 @@
+<?php
+include 'config.php';
+session_start();
+$sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
+$account_number = $_SESSION['account_number'];
+$result = mysqli_query($conn, $sql);
+$row = $result->fetch_assoc();
+
+if (isset($_POST['submit_withdraw'])) {
+    if (isset($_POST['account_number'])) {
+        $account_number = $_POST['account_number'];
+        $withdraw_amount = $_POST['withdraw_amount'];
+    }
+    if ($account_number != $row['customer_id']) {
+        echo '<script>Account Number Didnt Match</script>';
+    } else {
+        $total_debit = $row['total_debit'] + $withdraw_amount;
+        $net_balance = $row['net_balance'] - $withdraw_amount;
+
+        $transaction_id = mt_rand(100, 999) . mt_rand(1000, 9999) . mt_rand(10, 99);
+
+        date_default_timezone_set('Asia/Kolkata');
+        $transaction_date = date("d/m/y h:i:s A");
+
+        $remark = "Cash Withdrawal";
+
+        $description = "Cash Withdrawal";
+
+        $conn->autocommit(FALSE);
+
+        $sql1 = "UPDATE customers SET net_balance = '$net_balance' WHERE customer_id = '$account_number' ";
+        $sql2 = "UPDATE customers SET total_debit = '$total_debit' WHERE customer_id = '$account_number' ";
+
+        $sql3 = "INSERT INTO passbook_$account_number(Transaction_id,Transaction_date,Description,Cr_amount,Dr_amount,Net_Balance,Remark)
+        VALUES('$transaction_id','$transaction_date','$description','0','$total_debit','$net_balance','$remark')";
+
+        if ($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE && $conn->query($sql3) == TRUE) {
+            $conn->commit();
+            echo '<script>alert("Withdrawal Successfull")
+                 location="WithdrawPage.php"</script>';
+        } else {
+            echo '<script>alert("Transaction failed\n\nReason:\n\n' . $conn->error . '")</script>';
+            $conn->rollback();
+        }
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +76,7 @@
                         <div class="sidebaArea">
                             <div class="sidebarTopArea text-center">
                                 <div class="userName">
-                                    <h3>Cyril Charles O Alvez</h3>
+                                    <h3><?php echo $row['name']; ?></h3>
                                 </div>
                             </div>
                             <div class="slidebarNavArea">
@@ -38,12 +88,7 @@
                                         <li class="navItem submenu">
                                             <a href="DTransferown.php">Transfer
                                                 <span class="pull-right-container">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-                                                        focusable="false" width="1em" height="1em"
-                                                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"
-                                                        class="iconify" data-icon="dashicons:arrow-right-alt2"
-                                                        data-inline="false" style="transform: rotate(360deg);">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" class="iconify" data-icon="dashicons:arrow-right-alt2" data-inline="false" style="transform: rotate(360deg);">
                                                         <path fill="currentColor" d="m6 15l5-5l-5-5l1-2l7 7l-7 7z">
                                                         </path>
                                                     </svg>
@@ -70,20 +115,20 @@
                                         <h4>WITHDRAW</h4>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="container">
-                                <form action="">
+                                <form method="post">
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Account Number</label>
-                                        <input type="text" style="margin-top: 10px;" class="form-control">
+                                        <input type="text" style="margin-top: 10px;" class="form-control" name=account_number>
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Withdraw Amount</label>
-                                        <input type="text" style="margin-top: 10px;" class="form-control">
+                                        <input type="text" style="margin-top: 10px;" class="form-control" name=withdraw_amount>
                                     </div>
                                     <div style="margin-top: 20px;">
-                                        <button type="submit" class="btn buttColor">Submit</button>
+                                        <button type="submit" class="btn buttColor" name="submit_withdraw">Submit</button>
                                     </div>
                                 </form>
                             </div>
