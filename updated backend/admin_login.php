@@ -26,13 +26,13 @@ if (isset($_SESSION['admin_login'])) {
     <?php include_once 'admin_out_header.php'; ?>
 
     <section>
-        <div class="pt-150 pb-100 dashboardArea">
+        <div class="pt-150 pb-100 dashboardArea" style="padding-bottom: 226px; padding-top: 225px;" >
             <div class="container">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="col-lg-12 text-center" style="color: #37517eeb;">
                         <h1>LOG IN</h1>
                     </div>
-                    <div class="container" style="background-color: white;">
+                    <div class="container">
                         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                             <div class="mb-3" style="margin-top: 20px;">
                                 <input style="margin-top: 10px;" type="text" name="admin_username" class="form-control" placeholder="Admin Username">

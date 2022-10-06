@@ -21,24 +21,24 @@
 
     <!-- ========== Dashboard area ========== -->
     <section>
-        <div class="pt-150 pb-100 dashboardArea">
+        <div class="pt-150 pb-100 dashboardArea" style="padding-bottom: 160px; padding-top: 163px;">
             <div class="container">
-                <div class="col-lg-6 offset-lg-3" style="background-color: white;">
+                <div class="col-lg-6 offset-lg-3">
                     <div class="col-lg-12 text-center" style="color: #37517eeb;">
                         <h1>ONLINE APPLICATION FORM</h1>
                     </div>
-                    <div class="container" style="background-color: white; margin-top: 50px;">
+                    <div class="container" style="margin-top: 50px;">
                         <div class="container applicationForm">
                             <form action="" method="post">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-6">
                                         <div class="form-group">
                                             <input type="text" name="name" class="form-control" placeholder="Name">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-6">
                                         <div style="text-align:center;">
-                                            <div class="form-group">
+                                            <div class="form-group" >
                                                 <select name="sex" id="sex" class="dropbtn form-control">
                                                     <option value="" style="color: red;">Sex</option>
                                                     <option value="Male">Male</option>
@@ -50,31 +50,31 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-top: 20px;">
                                             <input type="text" name="mobile_number" class="form-control" placeholder="Mobile no.">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-top: 20px;">
                                             <input type="text" name="email" class="form-control" placeholder="Email">
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="form-group">
+                                    <div class="form-group" style="margin-top: 20px;">
                                         <input type="text" name="full_address" class="form-control" placeholder="Full Address">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-top: 20px;">
                                             <input onfocus="(this.type='date')" type="text" name="date_of_birth" class="form-control" placeholder="Date of Birth" id="date">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div style="text-align:center;">
-                                            <div class="form-group">
+                                            <div class="form-group" style="margin-top: 20px;">
                                                 <select name="branch" id="branch" class="dropbtn form-control" style="margin-top: 10px;">
                                                     <option value="">Branch</option>
                                                     <option value="Tagum">Tagum</option>
