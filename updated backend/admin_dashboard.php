@@ -1,3 +1,5 @@
+<?php session_start();  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,7 +81,7 @@
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="count">
-                                                        <h4><?php echo "$_SESSION[count_pending]"; echo "$_SESSION[admin_name]"?></h4>
+                                                        <h4><?php echo "$_SESSION[admin_name]"?></h4>
                                                     </div> 
                                                 </div>
                                                 <div class="col-lg-4">

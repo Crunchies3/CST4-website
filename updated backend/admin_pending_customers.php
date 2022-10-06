@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -100,7 +102,7 @@
                                                                     <td>' . $row['date_created'] . '</td>
                                                                     <td scope="col-2">
                                                                         <div >
-                                                                                <button class="btn btn-primary">Approve</button>
+                                                                                <button class="btn btn-primary"><a href="admin_confirm_pending_cust.php">Approve</a></button>
                                                                                 <button class="btn btn-warning">More</button>
                                                                         </div>
                                                                     </td>
