@@ -97,7 +97,7 @@ $row = $result->fetch_assoc();
                       <div class="row">
                         <div class="col-lg-8">
                           <div class="count">
-                            <h4>P<br><?php echo $row['net_balance']; ?></h4>
+                            <h4>P <?php echo $row['net_balance']; ?></h4>
                           </div>
                         </div>
                         <div class="col-lg-4">
@@ -118,7 +118,7 @@ $row = $result->fetch_assoc();
                       <div class="row">
                         <div class="col-lg-8">
                           <div class="count">
-                            <h4>P<br><?php echo $row['total_credit']; ?></h4>
+                            <h4>P <?php echo $row['total_credit']; ?></h4>
                           </div>
                         </div>
                         <div class="col-lg-4">
@@ -138,7 +138,7 @@ $row = $result->fetch_assoc();
                       <div class="row">
                         <div class="col-lg-8">
                           <div class="count">
-                            <h4>P<br><?php echo $row['total_debit']; ?></h4>
+                            <h4>P <?php echo $row['total_debit']; ?></h4>
                           </div>
                         </div>
                         <div class="col-lg-4">
