@@ -32,7 +32,7 @@ if (isset($_SESSION['admin_login'])) {
                         <div class="sidebaArea">
                             <div class="sidebarTopArea text-center">
                                 <div class="userName">
-                                    <h3>name</h3>
+                                    <h3><?php echo $row['name'];?></h3>
                                 </div>
                             </div>
                             <div class="slidebarNavArea">
@@ -94,8 +94,8 @@ if (isset($_SESSION['admin_login'])) {
                                                             <td scope="col-2">' . $row['date_created'] . '</td>
                                                             <td scope="col-2">
                                                                 <div >
-                                                                        <button class="btn btn-primary">Credit</button>
-                                                                        <button class="btn btn-warning">More</button>
+                                                                        <button class="btn btn-primary"><a href="admin_credit_customer.php?credit_cust='.$customer_id.'" style = "color:white";>Credit</a></button>
+                                                                        <button class="btn btn-warning"><a href="admin_delete_customer.php?delete_cust='.$customer_id.'" style = "color:white";>Delete</a></button>
                                                                 </div>
                                                             </td>
                                                         </tr>';
