@@ -56,8 +56,8 @@ if ($result->num_rows > 0) {
     <!-- ========== End Section ========== -->
 
     <!-- ========== Dashboard area ========== -->
-    <section>
-        <div class="dashboardArea pt-150 pb-100">
+    <section class="dashboardArea">
+        <div class=" pt-150 pb-100">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3">

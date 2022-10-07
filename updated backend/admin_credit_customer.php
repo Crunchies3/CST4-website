@@ -6,10 +6,9 @@
 
 <body>
     <form action="" method="post">
-        <label for="">ENTER AMOUNT TO CREDIT</label>
-        <input class="customer" type="text" name="credit_amount" placeholder="Amount" required><br>
-        <input class="customer" type="submit" name="credit_btn" value="Credit">
-        <button class="btn btn-secondary"><a href="admin_view_customer.php">CANCEL</a></button>
+        <label for="">Enter amount to credit</label>
+        <input class="customer" type="text" name="credit_amount" placeholder="Amount" required><br><br>
+        <input class="customer btn btn-primary" type="submit" name="credit_btn" value="Credit">
     </form>
 </body>
 
@@ -17,7 +16,7 @@
 
 <?php
 if (isset($_POST['credit_btn'])) {
-    $customer_id = $_GET['credit_cust'];
+    $customer_id = $credit_cust;
     $credit_amount = $_POST['credit_amount'];
 
     if (!is_numeric($_POST['credit_amount'])) {

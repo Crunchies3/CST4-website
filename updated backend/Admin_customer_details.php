@@ -116,11 +116,63 @@ $row1 = $result1->fetch_assoc();
                                                     <div class="row">
                                                         <div class="col-3">
                                                             <h6>Add Balance</h6>
-                                                            <button class="btn btn-primary"><a href="admin_credit_customer.php?credit_cust=<?php echo $customer_id ?>" style="color:white; text-decoration: none;" ;>Credit</a></button>
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                                                Credit
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Credit Amount</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form action="" method="post">
+                                                                                <?php
+                                                                                $credit_cust = $customer_id;
+                                                                                include "admin_credit_customer.php";
+                                                                                ?>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="col-3">
                                                             <h6>Delete User</h6>
-                                                            <button class="btn btn-danger"><a href="admin_delete_customer.php?delete_cust=<?php echo $customer_id ?>" style="color:white; text-decoration: none;" ;>Delete</a></button>
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                Delete
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Confirm Delete?</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form action="" method="post">
+                                                                                <?php
+                                                                                $delete_cust = $customer_id;
+                                                                                include "admin_delete_customer.php";
+                                                                                ?>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div>

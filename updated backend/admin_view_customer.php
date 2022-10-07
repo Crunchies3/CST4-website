@@ -23,8 +23,8 @@ if (isset($_SESSION['admin_login'])) {
     <?php
     include 'admin_header.php';
     ?>
-    <section>
-        <div class="dashboardArea pt-150 pb-100">
+    <section class="dashboardArea">
+        <div class=" pt-150 pb-100">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3">
@@ -93,7 +93,7 @@ if (isset($_SESSION['admin_login'])) {
                                                             <td scope="col-2">' . $row['date_created'] . '</td>
                                                             <td scope="col-2">
                                                                 <div >
-                                                                        <button class="btn btn-info"><a href="admin_customer_details.php?view_cust=' . $customer_id . '" style = "color:white";>View</a></button>
+                                                                        <button class="btn btn-info"><a href="admin_customer_details.php?view_cust=' . $customer_id . '" style = "color:white; text-decoration:none;";>View</a></button>
                                                                 </div>
                                                             </td>
                                                         </tr>';
