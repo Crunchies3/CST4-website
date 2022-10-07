@@ -25,7 +25,7 @@
                         <div class="sidebaArea">
                             <div class="sidebarTopArea text-center">
                                 <div class="userName">
-                                    <h3>name</h3>
+                                    <h3><?php echo $row['name'] ?></h3>
                                 </div>
                             </div>
                             <div class="slidebarNavArea">
@@ -99,8 +99,8 @@
                                                                     <td>' . $row['date_created'] . '</td>
                                                                     <td scope="col-2">
                                                                         <div >
-                                                                                <button class="btn btn-primary"><a href="admin_confirm_pending_cust.php">Approve</a></button>
-                                                                                <button class="btn btn-warning">More</button>
+                                                                                <button class="btn btn-primary"><a href="admin_confirm_pending_cust.php?approve_cust='.$application_num.'" style = "color:white";>Approve</a></button>
+                                                                        <button class="btn btn-danger"><a href="admin_confirm_pending_cust.php?delete_cust='.$application_num.'" style = "color:white";>Delete</a></button></td>
                                                                         </div>
                                                                     </td>
                                                                     </tr>';
@@ -130,8 +130,8 @@
                                                             <td>' . $row['date_created'] . '</td>
                                                             <td scope="col-2">
                                                                 <div >
-                                                                        <button class="btn btn-primary"><a href="admin_confirm_pending_cust.php">Approve</a></button>
-                                                                        <button class="btn btn-warning">More</button>
+                                                                        <button class="btn btn-primary"><a href="admin_confirm_pending_cust.php?approve_cust='.$application_num.'" style = "color:white";>Approve</a></button>
+                                                                        <button class="btn btn-danger"><a href="admin_confirm_pending_cust.php?delete_cust='.$application_num.'" style = "color:white";>Delete</a></button></td>
                                                                 </div>
                                                             </td>
                                                             </tr>';
