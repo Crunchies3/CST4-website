@@ -172,10 +172,10 @@ $row = $result->fetch_assoc();
                         <th scope="col">#</th>
                         <th scope="col">TX Number</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Credit Amount</th>
-                        <th scope="col">Debit Amount</th>
-                        <th scope="col">Net Balance</th>
-                        <th scope="col">Remark</th>
+                        <th scope="col">Balance</th>
+                        <th scope="col">Withdraw</th>
+                        <th scope="col">Deposit</th>
+                        
                         <th scope="col">Transaction Date</th>
                       </tr>
                     </thead>
@@ -190,10 +190,9 @@ $row = $result->fetch_assoc();
                           <td>' . $Sl_no++ . '</td>
                           <td>' . $row['Transaction_id'] . '</td>
                           <td>' . $row['Description'] . '</td>
-                          <td>' . $row['Cr_amount'] . '</td>
-                          <td>' . $row['Dr_amount'] . '</td>
                           <td>' . $row['Net_Balance'] . '</td>
-                          <td>' . $row['Remark'] . '</td>
+                          <td>' . $row['Dr_amount'] . '</td>
+                          <td>' . $row['Cr_amount'] . '</td>                         
                           <td>' . $row['Transaction_date'] . '</td>                                   
                           </tr>';
                         }
