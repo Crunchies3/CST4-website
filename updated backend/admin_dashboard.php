@@ -92,7 +92,7 @@ if ($result->num_rows > 0) {
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="count">
-                                                        <h4><?php echo "$_SESSION[user_count]" ?></h4>
+                                                        <h4><?php if(isset($_SESSION['user_count'])){echo "$_SESSION[user_count]";}else echo'0'; ?></h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -113,7 +113,7 @@ if ($result->num_rows > 0) {
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="count">
-                                                        <h4><?php echo "$_SESSION[pend_count]" ?></h4>
+                                                        <h4><?php if(isset($_SESSION['pend_count'])){echo "$_SESSION[pend_count]";}else echo'0'; ?></h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
