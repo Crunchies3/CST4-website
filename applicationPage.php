@@ -1,3 +1,4 @@
+<?php require 'AP_BACKEND.php'?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,16 +30,18 @@
                     </div>
                     <div class="container" style="margin-top: 50px;">
                         <div class="container applicationForm">
-                            <form action="" method="post">
+                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
+                                        <?php if (!empty($name_err)) {echo '<div class="alert alert-primary col-lg-12 p-2" style="text-align:center;">' . $name_err . '</div>';}?>
                                             <input type="text" name="name" class="form-control" placeholder="Name">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div style="text-align:center;">
-                                            <div class="form-group" >
+                                            <div class="form-group">
+                                            <?php if (!empty($sex_err)) {echo '<div class="alert alert-primary col-lg-12 p-2" style="text-align:center;">' . $sex_err . '</div>';}?>
                                                 <select name="sex" id="sex" class="dropbtn form-control">
                                                     <option value="">Sex</option>
                                                     <option value="Male">Male</option>
@@ -51,11 +54,13 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group" style="margin-top: 20px;">
+                                        <?php if (!empty($mobile_number_err)) {echo '<div class="alert alert-primary col-lg-12 p-2" style="text-align:center;">' . $mobile_number_err . '</div>';}?>
                                             <input type="text" name="mobile_number" class="form-control" placeholder="Mobile no.">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group" style="margin-top: 20px;">
+                                        <?php if (!empty($email_err)) {echo '<div class="alert alert-primary col-lg-12 p-2" style="text-align:center;">' . $email_err . '</div>';}?>
                                             <input type="text" name="email" class="form-control" placeholder="Email">
                                         </div>
                                     </div>
@@ -63,18 +68,21 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group" style="margin-top: 20px;">
+                                    <?php if (!empty($full_address_err)) {echo '<div class="alert alert-primary col-lg-12 p-2" style="text-align:center;">' . $full_address_err . '</div>';}?>
                                         <input type="text" name="full_address" class="form-control" placeholder="Full Address">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group" style="margin-top: 20px;">
+                                        <?php if (!empty($date_of_birth_err)) {echo '<div class="alert alert-primary col-lg-12 p-2" style="text-align:center;">' . $date_of_birth_err . '</div>';}?>
                                             <input onfocus="(this.type='date')" type="text" name="date_of_birth" class="form-control" placeholder="Date of Birth" id="date">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div style="text-align:center;">
                                             <div class="form-group" style="margin-top: 20px;">
+                                            <?php if (!empty($branch_err)) {echo '<div class="alert alert-primary col-lg-12 p-2" style="text-align:center;">' . $branch_err . '</div>';}?>
                                                 <select name="branch" id="branch" class="dropbtn form-control" style="margin-top: 10px;">
                                                     <option value="">Branch</option>
                                                     <option value="Tagum">Tagum</option>
@@ -94,8 +102,6 @@
         </div>
     </section>
 
-    <!-- connecting sa backend ani -->
-    <?php require 'AP_BACKEND.php'; ?>
 
     <!-- ========== footer Section ========== -->
     <?php include_once 'footer.php'; ?>
