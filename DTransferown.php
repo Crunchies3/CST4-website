@@ -13,62 +13,67 @@ if (isset($_POST['submit_transfer'])) {
     if (isset($_POST['transfer_to'])) {
         $transfer_to = $_POST['transfer_to'];
         $amount_transfer = $_POST['amount_transfer'];
-        $find = "SELECT * FROM customers";
-        $result = mysqli_query($conn, $find);
-        $rowfind = $result->fetch_assoc();
-        if($transfer_to != $rowfind['customer_id']){
-            $transfer_to_err = "Can't find the account number";
-        }
-        if($amount_transfer > $row['net_balance']){
+
+        if ($amount_transfer > $row['net_balance']) {
             $amount_err = "Not Enough Balance To Transfer";
         }
     }
-    
-    
-    
-    if(empty($transfer_to_err) && empty($amount_err)) {
-        $total_debit = $row['total_debit'] + $amount_transfer;
-        $net_balance = $row['net_balance'] - $amount_transfer;
 
-        $transaction_id = mt_rand(100, 999) . mt_rand(1000, 9999) . mt_rand(10, 99);
 
-        date_default_timezone_set('Asia/Kolkata');
-        $transaction_date = date("d/m/y h:i:s A");
+    $find = "SELECT * FROM customers";
+    $result1 = mysqli_query($conn, $find);
+    while ($rowfind = $result1->fetch_assoc()) {
+        if ($transfer_to == $rowfind['customer_id']) {
+            
+            if (empty($transfer_to_err) && empty($amount_err)) {
+                $total_debit = $row['total_debit'] + $amount_transfer;
+                $net_balance = $row['net_balance'] - $amount_transfer;
 
-        $remark = "Cash Transfer";
+                $transaction_id = mt_rand(100, 999) . mt_rand(1000, 9999) . mt_rand(10, 99);
 
-        $description = "Cash Transfer";
+                date_default_timezone_set('Asia/Kolkata');
+                $transaction_date = date("d/m/y h:i:s A");
 
-        $conn->autocommit(FALSE);
+                $remark = "Cash Transfer";
 
-        $sql1 = "UPDATE customers SET net_balance = '$net_balance' WHERE customer_id = '$account_number' ";
-        $sql2 = "UPDATE customers SET total_debit = '$total_debit' WHERE customer_id = '$account_number' ";
+                $description = "Cash Transfer";
 
-        $sql3 = "INSERT INTO passbook_$account_number(Transaction_id,Transaction_date,Description,Cr_amount,Dr_amount,Net_Balance,Remark)
+                $conn->autocommit(FALSE);
+
+                $sql1 = "UPDATE customers SET net_balance = '$net_balance' WHERE customer_id = '$account_number' ";
+                $sql2 = "UPDATE customers SET total_debit = '$total_debit' WHERE customer_id = '$account_number' ";
+
+                $sql3 = "INSERT INTO passbook_$account_number(Transaction_id,Transaction_date,Description,Cr_amount,Dr_amount,Net_Balance,Remark)
         VALUES('$transaction_id','$transaction_date','$description','0','$total_debit','$net_balance','$remark')";
 
-        $sql_other = "SELECT * FROM customers WHERE customer_id = '$transfer_to' ";
-        $result = mysqli_query($conn, $sql_other);
-        $row = $result->fetch_assoc();
+                $sql_other = "SELECT * FROM customers WHERE customer_id = '$transfer_to' ";
+                $result = mysqli_query($conn, $sql_other);
+                $row = $result->fetch_assoc();
 
-        $total_credit = $row['total_credit'] + $amount_transfer;
-        $other_net_balance = $row['net_balance'] + $amount_transfer;
+                $total_credit = $row['total_credit'] + $amount_transfer;
+                $other_net_balance = $row['net_balance'] + $amount_transfer;
 
-        $sql4 = "UPDATE customers SET net_balance = '$other_net_balance' WHERE customer_id = '$transfer_to' ";
-        $sql5 = "UPDATE customers SET total_credit = '$total_credit' WHERE customer_id = '$transfer_to' ";
+                $sql4 = "UPDATE customers SET net_balance = '$other_net_balance' WHERE customer_id = '$transfer_to' ";
+                $sql5 = "UPDATE customers SET total_credit = '$total_credit' WHERE customer_id = '$transfer_to' ";
 
-        $sql6 = "INSERT INTO passbook_$transfer_to(Transaction_id,Transaction_date,Description,Cr_amount,Dr_amount,Net_Balance,Remark)
+                $sql6 = "INSERT INTO passbook_$transfer_to(Transaction_id,Transaction_date,Description,Cr_amount,Dr_amount,Net_Balance,Remark)
         VALUES('$transaction_id','$transaction_date','$description','$total_credit','0','$other_net_balance','$remark')";
 
-        if ($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE && $conn->query($sql3) == TRUE  && $conn->query($sql4) == TRUE  && $conn->query($sql5) == TRUE  && $conn->query($sql6) == TRUE) {
-            $conn->commit();
-            echo '<script>alert("Account Cash Transfer Successfull")
+                if ($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE && $conn->query($sql3) == TRUE  && $conn->query($sql4) == TRUE  && $conn->query($sql5) == TRUE  && $conn->query($sql6) == TRUE) {
+                    $conn->commit();
+                    echo '<script>alert("Account Cash Transfer Successfull")
                  location="DTransferown.php"</script>';
-        } else {
-            echo '<script>alert("Transaction failed\n\nReason:\n\n' . $conn->error . '")</script>';
-            $conn->rollback();
+                } else {
+                    echo '<script>alert("Transaction failed\n\nReason:\n\n' . $conn->error . '")</script>';
+                    $conn->rollback();
+                }
+            }
+        }
+        else{
+            $transfer_to_err = "Can't find the account number";
         }
     }
+    
 }
 
 ?>
