@@ -1,6 +1,7 @@
 <?php
 include 'config.php';
 session_start();
+$transfer_amount_err ="";
 $sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
 $account_number = $_SESSION['account_number'];
 $result = mysqli_query($conn, $sql);
@@ -9,7 +10,11 @@ $row = $result->fetch_assoc();
 if (isset($_POST['submit_other_bank'])) {
     if (isset($_POST['transfer_amount'])) {
         $transfer_amount = $_POST['transfer_amount'];
+        if($transfer_amount > $row['net_balance']){
+            $transfer_amount_err = "Not Enough Balance ";
+        }
     }
+    if(empty($transfer_amount_err)){
         $total_debit = $row['total_debit'] + $transfer_amount;
         $net_balance = $row['net_balance'] - $transfer_amount;
 
@@ -38,6 +43,7 @@ if (isset($_POST['submit_other_bank'])) {
             echo '<script>alert("Transaction failed\n\nReason:\n\n' . $conn->error . '")</script>';
             $conn->rollback();
         }
+    }
     
 }
 
@@ -111,7 +117,7 @@ if (isset($_POST['submit_other_bank'])) {
 
                             </div>
                             <div class="container">
-                                <form method="post">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Country</label>
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="country_transfer">
@@ -130,6 +136,10 @@ if (isset($_POST['submit_other_bank'])) {
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Transfer Amount</label>
+                                        <?php if (!empty($transfer_amount_err)) {
+                                            echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $transfer_amount_err . '</div>';
+                                        }
+                                        ?>
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="transfer_amount">
                                     </div>
                                     <div style="margin-top: 20px;">
