@@ -1,6 +1,9 @@
 <?php
 include 'config.php';
 session_start();
+$transfer_to_err = "";
+$amount_err = "";
+
 $sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
 $account_number = $_SESSION['account_number'];
 $result = mysqli_query($conn, $sql);
@@ -10,10 +13,20 @@ if (isset($_POST['submit_transfer'])) {
     if (isset($_POST['transfer_to'])) {
         $transfer_to = $_POST['transfer_to'];
         $amount_transfer = $_POST['amount_transfer'];
+        $find = "SELECT * FROM customers";
+        $result = mysqli_query($conn, $find);
+        $rowfind = $result->fetch_assoc();
+        if($transfer_to != $rowfind['customer_id']){
+            $transfer_to_err = "Can't find the account number";
+        }
+        if($amount_transfer > $row['net_balance']){
+            $amount_err = "Not Enough Balance To Transfer";
+        }
     }
-    if ($account_number != $row['customer_id']) {
-        echo '<script>Account Number Didnt Match</script>';
-    } else {
+    
+    
+    
+    if(empty($transfer_to_err) && empty($amount_err)) {
         $total_debit = $row['total_debit'] + $amount_transfer;
         $net_balance = $row['net_balance'] - $amount_transfer;
 
@@ -130,13 +143,21 @@ if (isset($_POST['submit_transfer'])) {
 
                             </div>
                             <div class="container">
-                                <form method="post">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Account Number</label>
+                                        <?php if (!empty($transfer_to_err)) {
+                                            echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $transfer_to_err . '</div>';
+                                        }
+                                        ?>
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="transfer_to">
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Transfer Amount</label>
+                                        <?php if (!empty($amount_err)) {
+                                            echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $amount_err . '</div>';
+                                        }
+                                        ?>
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="amount_transfer">
                                     </div>
                                     <div style="margin-top: 20px;">
