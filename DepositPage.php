@@ -2,11 +2,13 @@
 include 'config.php';
 session_start();
 $account_number_err = "";
+$deposit_amount_err = "";
 $sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
-$account_number = $_SESSION['account_number'];
+$account_num = $_SESSION['account_number'];
 $result = mysqli_query($conn, $sql);
 $row = $result->fetch_assoc();
 if(isset($_POST['submit_deposit'])){
+
     if(empty(trim($_POST["account_number"]))){
         $account_number_err = "Please Enter Account Number";
     }else if(trim($_POST['account_number']) != $account_num){
@@ -20,8 +22,9 @@ if(isset($_POST['submit_deposit'])){
     }else{
         $deposit_amount = trim($_POST['deposit_amount']);
     }
-    
-    if(empty($account_number_err)) {
+
+
+    if(empty($account_number_err)&&empty($deposit_amount_err)) {
         $total_credit = $row['total_credit'] + $deposit_amount;
         $net_balance = $row['net_balance'] + $deposit_amount;
 
@@ -133,15 +136,13 @@ if(isset($_POST['submit_deposit'])){
                                 <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Account Number</label>
-                                        <?php if (!empty($account_number_err)) {
-                                            echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $account_number_err . '</div>';
-                                        }
+                                        <?php if (!empty($account_number_err)) {echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $account_number_err . '</div>';}
                                         ?>
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="account_number">
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Deposit Amount</label>
-                                        <?php if (!empty($deposit_amount_err)) {echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $deposit_amount_err . '</div>';}?>
+                                        <?php if (!empty($deposit_amount_err)) {echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $deposit_amount_err . '</div>';}?>                                      
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="deposit_amount">
                                     </div>
                                     <div style="margin-top: 20px;">
