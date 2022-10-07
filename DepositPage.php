@@ -1,6 +1,7 @@
 <?php
 include 'config.php';
 session_start();
+$account_number_err = "";
 $sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
 $account_number = $_SESSION['account_number'];
 $result = mysqli_query($conn, $sql);
@@ -9,10 +10,11 @@ if(isset($_POST['submit_deposit'])){
     if (isset($_POST['account_number'])) {
         $account_number = $_POST['account_number'];
         $deposit_amount = $_POST['deposit_amount'];
+        if ($account_number != $row['customer_id']) {
+           $account_number_err = "Account Number Didnt Match";
+        } 
     }
-    if ($account_number != $row['customer_id']) {
-        echo '<script>Account Number Didnt Match</script>';
-    } else {
+    if(empty($account_number_err)) {
         $total_credit = $row['total_credit'] + $deposit_amount;
         $net_balance = $row['net_balance'] + $deposit_amount;
 
@@ -121,13 +123,17 @@ if(isset($_POST['submit_deposit'])){
                                 
                             </div>
                             <div class="container">
-                                <form method="post">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Account Number</label>
+                                        <?php if (!empty($account_number_err)) {
+                                            echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $account_number_err . '</div>';
+                                        }
+                                        ?>
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="account_number">
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
-                                        <label>Deposit Amount</label>
+                                        <label>Deposit Amount</label>                                      
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="deposit_amount">
                                     </div>
                                     <div style="margin-top: 20px;">
