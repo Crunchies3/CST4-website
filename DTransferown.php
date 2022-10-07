@@ -49,7 +49,7 @@ if (isset($_POST['submit_transfer'])) {
 
         $transaction_id = mt_rand(100, 999) . mt_rand(1000, 9999) . mt_rand(10, 99);
 
-        date_default_timezone_set('Asia/Kolkata');
+        date_default_timezone_set('Asia/Manila');
         $transaction_date = date("d/m/y h:i:s A");
 
         $remark = "Cash Transfer";
@@ -62,7 +62,7 @@ if (isset($_POST['submit_transfer'])) {
         $sql2 = "UPDATE customers SET total_debit = '$total_debit' WHERE customer_id = '$account_number' ";
 
         $sql3 = "INSERT INTO passbook_$account_number(Transaction_id,Transaction_date,Description,Cr_amount,Dr_amount,Net_Balance,Remark)
-        VALUES('$transaction_id','$transaction_date','$description','0','$total_debit','$net_balance','$remark')";
+        VALUES('$transaction_id','$transaction_date','$description','0','$amount_transfer','$net_balance','$remark')";
 
         $sql_other = "SELECT * FROM customers WHERE customer_id = '$transfer_to' ";
         $result = mysqli_query($conn, $sql_other);
