@@ -7,13 +7,20 @@ $account_number = $_SESSION['account_number'];
 $result = mysqli_query($conn, $sql);
 $row = $result->fetch_assoc();
 if(isset($_POST['submit_deposit'])){
-    if (isset($_POST['account_number'])) {
-        $account_number = $_POST['account_number'];
-        $deposit_amount = $_POST['deposit_amount'];
-        if ($account_number != $row['customer_id']) {
-           $account_number_err = "Account Number Didnt Match";
-        } 
+    if(empty(trim($_POST["account_number"]))){
+        $account_number_err = "Please Enter Account Number";
+    }else if(trim($_POST['account_number']) != $account_num){
+        $account_number_err = "The Account Number you entered doesnt match to your own account number";
+    }else{
+        $account_number = trim($_POST['account_number']);
     }
+
+    if(empty(trim($_POST["deposit_amount"]))){
+        $deposit_amount_err = "Please Enter Amount";
+    }else{
+        $deposit_amount = trim($_POST['deposit_amount']);
+    }
+    
     if(empty($account_number_err)) {
         $total_credit = $row['total_credit'] + $deposit_amount;
         $net_balance = $row['net_balance'] + $deposit_amount;
@@ -133,7 +140,8 @@ if(isset($_POST['submit_deposit'])){
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="account_number">
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
-                                        <label>Deposit Amount</label>                                      
+                                        <label>Deposit Amount</label>
+                                        <?php if (!empty($deposit_amount_err)) {echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $deposit_amount_err . '</div>';}?>
                                         <input type="text" style="margin-top: 10px;" class="form-control" name="deposit_amount">
                                     </div>
                                     <div style="margin-top: 20px;">
