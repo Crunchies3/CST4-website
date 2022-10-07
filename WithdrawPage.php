@@ -4,7 +4,7 @@ session_start();
 $account_number_err = "";
 $withdraw_amount_err = "";
 $sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
-$account_number = $_SESSION['account_number'];
+$account_num = $_SESSION['account_number'];
 $result = mysqli_query($conn, $sql);
 $row = $result->fetch_assoc();
 
@@ -25,7 +25,8 @@ if (isset($_POST['submit_withdraw'])) {
     }else{
         $withdraw_amount = trim($_POST['withdraw_amount']);
     }
-    
+
+
      if(empty($account_number_err)&&empty($withdraw_amount_err)) {
 
         $total_debit = $row['total_debit'] + $withdraw_amount;
