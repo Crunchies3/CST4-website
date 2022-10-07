@@ -10,17 +10,22 @@ $row = $result->fetch_assoc();
 
 if (isset($_POST['submit_withdraw'])) {
 
-    if (isset($_POST['account_number'])) {   
-        $account_number = $_POST['account_number'];
-        $withdraw_amount = $_POST['withdraw_amount'];  
-        if ($account_number != $row['customer_id']) {
-            $account_number_err = "Account Number Didn't Match";
-        }
-        if($withdraw_amount > $row['net_balance']){
-            $withdraw_amount_err = "Not Enough Balance";
-        }
-       
+    if(empty(trim($_POST["account_number"]))){
+        $account_number_err = "Please Enter Account Number";
+    }else if(trim($_POST['account_number']) != $account_num){
+        $account_number_err = "The Account Number you entered doesnt match to your own account number";
+    }else{
+        $account_number = trim($_POST['account_number']);
     }
+
+    if(empty(trim($_POST["withdraw_amount"]))){
+        $withdraw_amount_err = "Please Enter Amount";
+    }else if(trim($_POST['withdraw_amount']) > $row['net_balance']){
+        $withdraw_amount_err = "You dont have sufficient Balance";
+    }else{
+        $withdraw_amount = trim($_POST['withdraw_amount']);
+    }
+    
      if(empty($account_number_err)&&empty($withdraw_amount_err)) {
 
         $total_debit = $row['total_debit'] + $withdraw_amount;
