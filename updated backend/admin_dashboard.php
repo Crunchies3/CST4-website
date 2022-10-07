@@ -16,6 +16,8 @@ if ($result->num_rows > 0) {
         $Sl_no++;
     }
     $_SESSION["pend_count"] = $Sl_no - 1;
+} else {
+    $_SESSION["pend_count"] = 0;
 }
 
 
@@ -29,6 +31,8 @@ if ($result->num_rows > 0) {
         $Sl_no++;
     }
     $_SESSION["user_count"] = $Sl_no - 1;
+} else {
+    $_SESSION["user_count"] = 0;
 }
 ?>
 
@@ -113,7 +117,14 @@ if ($result->num_rows > 0) {
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="count">
-                                                        <h4><?php if(isset($_SESSION['pend_count'])){echo "$_SESSION[pend_count]";}else echo'0'; ?></h4>
+                                                        <h4>
+                                                        <?php 
+                                                        if(isset($_SESSION['pend_count']))
+                                                        {
+                                                            echo "$_SESSION[pend_count]";
+                                                        }
+                                                        ?>
+                                                        </h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">

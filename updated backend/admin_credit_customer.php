@@ -49,9 +49,7 @@ if (isset($_POST['credit_btn'])) {
             if ($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE) {
                 $conn->commit();
                 echo '<script>alert("Customer Credited Successfully")
-                location="admin_view_customer.php"</script>';
-               
-               
+                location="admin_customer_details.php?view_cust='. $customer_id .'"</script>';
                 
             } else {
                 echo '<script>alert("Transaction failed\n\nReason:\n\n' . $conn->error . '")</script>';
