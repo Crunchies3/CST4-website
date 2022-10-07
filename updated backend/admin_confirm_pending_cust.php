@@ -83,6 +83,7 @@ if (isset($_GET['approve_cust'])) {
     }
 }
 if(isset($_GET['delete_cust'])){
+	include 'config.php';
     $application_num = $_GET['delete_cust'];
     $sql5 = "DELETE FROM pending_accounts WHERE application_num = '$application_num'";
 
@@ -92,3 +93,5 @@ if(isset($_GET['delete_cust'])){
         location="admin_dashboard.php"</script>';
     }
 }
+
+?>
