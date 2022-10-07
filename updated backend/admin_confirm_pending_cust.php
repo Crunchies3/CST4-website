@@ -1,7 +1,7 @@
 <?php
+    include 'config.php';  
 
 if (isset($_GET['approve_cust'])) {
-    include 'config.php';  
     $application_num = $_GET['approve_cust'];
     echo $application_num;
     //pagpangita japon sa table kung unsay match sa application number.
@@ -92,5 +92,3 @@ if(isset($_GET['delete_cust'])){
         location="admin_dashboard.php"</script>';
     }
 }
-
-?>

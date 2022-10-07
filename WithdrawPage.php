@@ -1,19 +1,28 @@
 <?php
 include 'config.php';
 session_start();
+$account_number_err = "";
+$withdraw_amount_err = "";
 $sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
 $account_number = $_SESSION['account_number'];
 $result = mysqli_query($conn, $sql);
 $row = $result->fetch_assoc();
 
 if (isset($_POST['submit_withdraw'])) {
-    if (isset($_POST['account_number'])) {
+
+    if (isset($_POST['account_number'])) {   
         $account_number = $_POST['account_number'];
-        $withdraw_amount = $_POST['withdraw_amount'];
+        $withdraw_amount = $_POST['withdraw_amount'];  
+        if ($account_number != $row['customer_id']) {
+            $account_number_err = "Account Number Didn't Match";
+        }
+        if($withdraw_amount > $row['net_balance']){
+            $withdraw_amount_err = "Not Enough Balance";
+        }
+       
     }
-    if ($account_number != $row['customer_id']) {
-        echo '<script>Account Number Didnt Match</script>';
-    } else {
+     if(empty($account_number_err)&&empty($withdraw_amount_err)) {
+
         $total_debit = $row['total_debit'] + $withdraw_amount;
         $net_balance = $row['net_balance'] - $withdraw_amount;
 
@@ -34,7 +43,7 @@ if (isset($_POST['submit_withdraw'])) {
         $sql3 = "INSERT INTO passbook_$account_number(Transaction_id,Transaction_date,Description,Cr_amount,Dr_amount,Net_Balance,Remark)
         VALUES('$transaction_id','$transaction_date','$description','0','$total_debit','$net_balance','$remark')";
 
-        if ($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE && $conn->query($sql3) == TRUE) {
+        if ($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE && $conn->query($sql3) == TRUE ) {
             $conn->commit();
             echo '<script>alert("Withdrawal Successfull")
                  location="WithdrawPage.php"</script>';
@@ -118,14 +127,24 @@ if (isset($_POST['submit_withdraw'])) {
 
                             </div>
                             <div class="container">
-                                <form method="post">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Account Number</label>
+                                        <?php if (!empty($account_number_err)) {
+                                            echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $account_number_err . '</div>';
+                                        }
+                                        ?>
                                         <input type="text" style="margin-top: 10px;" class="form-control" name=account_number>
+                                        
                                     </div>
                                     <div class="mb-3" style="margin-top: 20px;">
                                         <label>Withdraw Amount</label>
+                                        <?php if (!empty($withdraw_amount_err)) {
+                                            echo '<div class="alert alert-danger col-lg-4 p-2" style="text-align:center;">' . $withdraw_amount_err . '</div>';
+                                        }
+                                        ?>
                                         <input type="text" style="margin-top: 10px;" class="form-control" name=withdraw_amount>
+                                        
                                     </div>
                                     <div style="margin-top: 20px;">
                                         <button type="submit" class="btn buttColor" name="submit_withdraw">Submit</button>
