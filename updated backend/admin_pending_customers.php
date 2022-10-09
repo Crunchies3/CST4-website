@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+if (isset($_SESSION['admin_login'])) {
+} else header('location: admin_login.php'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -101,6 +103,110 @@
                                                                     <td>' . $row['date_created'] . '</td>
                                                                     <td scope="col-2">
                                                                         <div >
+                                                                            <!-- Button trigger modal -->
+                                                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                                                                Approve
+                                                                            </button>
+                                                                        
+                                                                            <!-- Modal -->
+                                                                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            <h5 class="modal-title" id="exampleModalLabel">Confirm Approval?</h5>
+                                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            <button class="btn btn-primary"><a href="admin_confirm_pending_cust.php?approve_cust=' . $application_num . '" style = "color:white; text-decoration:none";>Approve</a></button>
+                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+        
+                                                                            <!-- Button trigger modal -->
+                                                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                                Details
+                                                                            </button>
+        
+                                                                            <!-- Modal -->
+                                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            <h5 class="modal-title" id="exampleModalLabel">Applicant Details</h5>
+                                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            <div>
+                                                                                                <table class="table table-striped">
+                                                                                                    <thead>
+                                                                                                    <tr>
+                                                                                                        <th scope="col">Title</th>
+                                                                                                        <th scope="col">Description</th>
+                                                                                                    </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                    <tr>
+                                                                                                        <td>Name</td>
+                                                                                                        <td>' . $row['name'] . '</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Mobile Number</td>
+                                                                                                        <td>' . $row['mobile_number'] . '</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Email</td>
+                                                                                                        <td>' . $row['email'] . '</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Adress</td>
+                                                                                                        <td>' . $row['full_address'] . '</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Date of Birth</td>
+                                                                                                        <td>' . $row['date_of_birth'] . '</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Sex</td>
+                                                                                                        <td>' . $row['sex'] . '</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Date Created</td>
+                                                                                                        <td>' . $row['date_created'] . '</td>
+                                                                                                    </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+        
+                                                                            <!-- Button trigger modal -->
+                                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                                                                                Delete
+                                                                            </button>
+                                                                        
+                                                                            <!-- Modal -->
+                                                                            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            <h5 class="modal-title" id="exampleModalLabel">Confirm Delete?</h5>
+                                                                                            
+                                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            <button class="btn btn-danger"><a href="admin_confirm_pending_cust.php?delete_cust=' . $application_num . '" style = "color:white; text-decoration:none";>Delete</a></button>
+                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </td>
                                                                     </tr>';
@@ -176,31 +282,31 @@
                                                                                             <tbody>
                                                                                             <tr>
                                                                                                 <td>Name</td>
-                                                                                                <td>'.$row['name'].'</td>
+                                                                                                <td>' . $row['name'] . '</td>
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td>Mobile Number</td>
-                                                                                                <td>'.$row['mobile_number'].'</td>
+                                                                                                <td>' . $row['mobile_number'] . '</td>
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td>Email</td>
-                                                                                                <td>'.$row['email'].'</td>
+                                                                                                <td>' . $row['email'] . '</td>
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td>Adress</td>
-                                                                                                <td>'.$row['full_address'].'</td>
+                                                                                                <td>' . $row['full_address'] . '</td>
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td>Date of Birth</td>
-                                                                                                <td>'.$row['date_of_birth'].'</td>
+                                                                                                <td>' . $row['date_of_birth'] . '</td>
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td>Sex</td>
-                                                                                                <td>'.$row['sex'].'</td>
+                                                                                                <td>' . $row['sex'] . '</td>
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td>Date Created</td>
-                                                                                                <td>'.$row['date_created'].'</td>
+                                                                                                <td>' . $row['date_created'] . '</td>
                                                                                             </tr>
                                                                                             </tbody>
                                                                                         </table>

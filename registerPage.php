@@ -15,20 +15,30 @@ if (isset($_POST['submit'])) {
             $phone_number = $_POST['registered_number'];
             $birthdate = $_POST['d_o_b'];
             $password = $_POST['password'];
-        }
-        $sql = "SELECT * FROM customers WHERE name = '$account_holder'";
-        $result = mysqli_query($conn, $sql);
-        $row = $result->fetch_assoc();
-
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        if ($account_number == $row['customer_id'] && $phone_number == $row['mobile_number'] && $birthdate == $row['date_of_birth']) {
-            $sql = "UPDATE customers SET password='$password' WHERE name='$account_holder'";
-            $result = mysqli_query($conn, $sql);
-            header('location: loginPage.php');
-        } else {
-            $login_err = "Details does not match";
+            $confirm_password = $_POST['confirm_password'];
         }
 
+        $length = strlen(trim($password));
+
+        if ($length > 6) {
+
+            if ($password === $confirm_password) {
+
+                $sql = "SELECT * FROM customers WHERE name = '$account_holder'";
+                $result = mysqli_query($conn, $sql);
+                $row = $result->fetch_assoc();
+                $password = password_hash($password, PASSWORD_DEFAULT);
+                if ($account_number == $row['customer_id'] && $phone_number == $row['mobile_number'] && $birthdate == $row['date_of_birth'] && $row['password'] === null) {
+                    $sql = "UPDATE customers SET password='$password' WHERE name='$account_holder'";
+                    $result = mysqli_query($conn, $sql);
+                    header('location: loginPage.php');
+                } else {
+                    $login_err = "Details does not match or the Account is already registered.";
+                }
+
+            } else $login_err = "Password did not match";
+            
+        } else $login_err = "Password must have atleast 6 characters.";
     } else $login_err = "Account Number does not exist.";
 }
 ?>
@@ -55,7 +65,7 @@ if (isset($_POST['submit'])) {
     <!-- ========== Dashboard area ========== -->
 
     <section class="dashboardArea">
-        <div class="pt-150 pb-100" >
+        <div class="pt-150 pb-100">
             <div class="container">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="col-lg-12 text-center" style="color: #37517eeb;">

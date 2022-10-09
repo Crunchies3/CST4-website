@@ -19,12 +19,13 @@
 <?php
 include 'config.php';
 if (isset($_POST['confirm_delete'])) {
-    $customer_id = $_GET['delete_cust'];
+    $customer_id = $delete_cust;
     $sql1 = "DELETE FROM customers WHERE customer_id = '$customer_id'";
     $sql2 = "DROP TABLE passbook_$customer_id";
 
     if (($conn->query($sql1)  && $conn->query($sql2)) == TRUE) {
         $conn->commit();
+        $_SESSION['client_login'] = false;
         echo '<script>alert("Customer Deleted Successfully")
         location="admin_view_customer.php"</script>';
     } else {
