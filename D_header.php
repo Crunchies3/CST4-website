@@ -13,7 +13,7 @@
                     <li><a href="login_index.php">Home</a></li>
                     <li><a href="login_index.php#About">About</a></li>
                     <li><a href="login_index.php#Services">Services</a></li>
-                    <li><a href="login_index.php#Contact">Contact</a></li>
+                    <li><a href="login_index.php#Contact">Contact Us</a></li>
                     <li><a href="Dashboard.php">Dashboard</a></li>
                   </ul>
                 </nav>

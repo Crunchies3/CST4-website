@@ -16,7 +16,7 @@
                                     <li><a href="index.php">Home</a></li>
                                     <li><a href="index.php#About">About</a></li>
                                     <li><a href="index.php#Services">Services</a></li>
-                                    <li><a href="index.php#Contact">Contact</a></li>
+                                    <li><a href="index.php#Contact_Us">Contact Us</a></li>
                                     <li>
                                         <div class="dropdown">
                                             <button type="button" style="color: white; margin-top: -5px; padding: 1px; border: none;" class="btn dropdown-toggle" data-bs-toggle="dropdown">
