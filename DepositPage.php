@@ -78,8 +78,8 @@ if(isset($_POST['submit_deposit'])){
     <!-- ========== End Section ========== -->
     
     <!-- ========== Dashboard area ========== -->
-    <section>
-        <div class="dashboardArea pt-150 pb-100">
+    <section class="dashboardArea">
+        <div class=" pt-150 pb-100">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3">
@@ -116,7 +116,7 @@ if(isset($_POST['submit_deposit'])){
                                         </li>
                                         <li class="navItem submenu"><a href="DSupport.php">Support</a></li>
                                         <li class="navItem submenu"><a href="">Settings</a></li>
-                                        <li class="navItem"><a href="">Logout</a></li>
+                                        <li class="navItem"><a href="client_logout.php">Logout</a></li>
                                     </ul>
                                 </nav>
                             </div>

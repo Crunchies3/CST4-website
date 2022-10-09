@@ -1,5 +1,10 @@
 <?php include_once 'config.php';
 
+session_start();
+if (isset($_SESSION['client_login']) && $_SESSION['client_login'] === true) {
+    header("location: dashboard.php");
+    exit;
+}
 
 $login_err = "";
 

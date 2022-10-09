@@ -16,8 +16,8 @@
   <?php include_once 'D_header.php'; ?>
   <!-- ========== End Section ========== -->
   <!-- ========== Dashboard area ========== -->
-  <section>
-    <div class="dashboardArea pt-150 pb-100">
+  <section class="dashboardArea">
+    <div class=" pt-150 pb-100">
       <div class="container">
         <div class="row">
           <div class="col-lg-3">
@@ -31,10 +31,10 @@
                 <nav>
                   <ul>
                     <li class="navItem"><a href="Dashboard.php">Dashboard</a></li>
-                    <li class="navItem"><a href="">Withdraw</a></li>
-                    <li class="navItem"><a href="">Deposit</a></li>
+                    <li class="navItem"><a href="WithdrawPage.php">Withdraw</a></li>
+                    <li class="navItem"><a href="DepositPage.php">Deposit</a></li>
                     <li class="navItem submenu">
-                      <a href="DTransfer.php">Transfer
+                      <a href="DTransferown.php">Transfer
                         <span class="pull-right-container">
                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" class="iconify" data-icon="dashicons:arrow-right-alt2" data-inline="false" style="transform: rotate(360deg);">
                             <path fill="currentColor" d="m6 15l5-5l-5-5l1-2l7 7l-7 7z">
@@ -43,12 +43,12 @@
                         </span>
                       </a>
                       <ul class="submenu">
-                        <li><a href="">Own Bank Transfer</a></li>
-                        <li><a href="">Other Bank Transfer</a></li>
+                        <li><a href="DTransferown.php">Own Bank Transfer</a></li>
+                        <li><a href="DTransferother.php">Other Bank Transfer</a></li>
                       </ul>
                     </li>
                     <li class="navItem submenu show active">
-                      <a href="">Support
+                      <a href="DSupport.php">Support
                         <span class="pull-right-container">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" class="iconify" data-icon="dashicons:arrow-right-alt2" data-inline="false" style="transform: rotate(360deg);">
                               <path fill="currentColor" d="m6 15l5-5l-5-5l1-2l7 7l-7 7z">
@@ -62,7 +62,7 @@
                       </ul>
                     </li>
                     <li class="navItem submenu"><a href="">Settings</a></li>
-                    <li class="navItem"><a href="">Logout</a></li>
+                    <li class="navItem"><a href="client_logout.php">Logout</a></li>
                   </ul>
                 </nav>
               </div>

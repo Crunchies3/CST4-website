@@ -1,4 +1,11 @@
-<?php require 'AP_BACKEND.php'?>
+<?php require 'AP_BACKEND.php';
+
+session_start();
+if (isset($_SESSION['client_login']) && $_SESSION['client_login'] === true) {
+    header("location: dashboard.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
