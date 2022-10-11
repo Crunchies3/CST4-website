@@ -1,6 +1,10 @@
 <?php
 include 'config.php';
 session_start();
+if (!isset($_SESSION["client_login"]) || $_SESSION["client_login"] !== true) {
+    header("location: LoginPage.php");
+    exit;
+  }
 $transfer_amount_err ="";
 $sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
 $account_number = $_SESSION['account_number'];
@@ -98,8 +102,7 @@ if (isset($_POST['submit_other_bank'])) {
                                                 <li><a href="DTransferother.php">Other Bank Transfer</a></li>
                                             </ul>
                                         </li>
-                                        <li class="navItem submenu"><a href="DSupport.php">Support</a></li>
-                                        <li class="navItem submenu"><a href="">Settings</a></li>
+                                        <li class="navItem submenu"><a href="DSupport.php">Reset Password</a></li>
                                         <li class="navItem"><a href="client_logout.php">Logout</a></li>
                                     </ul>
                                 </nav>

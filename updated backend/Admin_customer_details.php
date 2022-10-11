@@ -1,16 +1,10 @@
 <?php
 session_start();
 include 'config.php';
-
-$customer_id = $_GET['view_cust'];
-$sql = "SELECT*FROM customers WHERE customer_id = '$customer_id' ";
-$result1 = $conn->query($sql);
-$row1 = $result1->fetch_assoc();
-
-
-
-
-
+    $customer_id =$_GET['view_cust'];
+    $sql = "SELECT*FROM customers WHERE customer_id = '$customer_id' ";
+    $result1 = $conn->query($sql);
+    $row1 = $result1->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +41,7 @@ $row1 = $result1->fetch_assoc();
                                         <li class="navItem"><a href="admin_dashboard.php">Dashboard</a></li>
                                         <li class="navItem active"><a href="admin_view_customer.php">View User</a></li>
                                         <li class="navItem"><a href="admin_pending_customers.php">View Pending Customer</a></li>
-                                        <li class="navItem"><a href="">Settings</a></li>
+                                        <li class="navItem"><a href="admin_reset_pass.php">Reset Password</a></li>
                                         <li class="navItem"><a href="admin_logout.php">Logout</a></li>
                                     </ul>
                                 </nav>
@@ -162,10 +156,38 @@ $row1 = $result1->fetch_assoc();
                                                                         <div class="modal-body">
                                                                             <form action="" method="post">
                                                                                 <?php
+                                                                                $customer_id; 
                                                                                 $delete_cust = $customer_id;
                                                                                 include "admin_delete_customer.php";
                                                                                 ?>
                                                                             </form>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <h6>Reset Password</h6>
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                                Reset Password
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <?php 
+                                                                            require 'adminreset_pass.php'; 
+                                                                            ?>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

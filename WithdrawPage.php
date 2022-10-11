@@ -1,6 +1,12 @@
 <?php
 include 'config.php';
+
 session_start();
+if (!isset($_SESSION["client_login"]) || $_SESSION["client_login"] !== true) {
+    header("location: LoginPage.php");
+    exit;
+  }
+  
 $account_number_err = "";
 $withdraw_amount_err = "";
 $sql = "SELECT * FROM customers Where customer_id = $_SESSION[account_number]";
@@ -114,8 +120,7 @@ if (isset($_POST['submit_withdraw'])) {
                                                 <li><a href="">Other Bank Transfer</a></li>
                                             </ul>
                                         </li>
-                                        <li class="navItem submenu"><a href="DSupport.php">Support</a></li>
-                                        <li class="navItem submenu"><a href="">Settings</a></li>
+                                        <li class="navItem submenu"><a href="DSupport.php">Reset Password</a></li>
                                         <li class="navItem"><a href="client_logout.php">Logout</a></li>
                                     </ul>
                                 </nav>

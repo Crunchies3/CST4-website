@@ -355,3 +355,8 @@ body {
 footer {
     min-height: 50px;
 }
+
+.buttColor {
+    background-color: #37517eeb;
+    color: white;
+}

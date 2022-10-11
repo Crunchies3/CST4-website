@@ -40,7 +40,7 @@ if (isset($_SESSION['admin_login'])) {
                                         <li class="navItem"><a href="admin_dashboard.php">Dashboard</a></li>
                                         <li class="navItem active"><a href="admin_view_customer.php">View User</a></li>
                                         <li class="navItem"><a href="admin_pending_customers.php">View Pending Customer</a></li>
-                                        <li class="navItem"><a href="">Settings</a></li>
+                                        <li class="navItem"><a href="admin_reset_pass.php">Reset Password</a></li>
                                         <li class="navItem"><a href="admin_logout.php">Logout</a></li>
                                     </ul>
                                 </nav>

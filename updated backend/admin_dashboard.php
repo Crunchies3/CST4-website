@@ -73,7 +73,7 @@ if ($result->num_rows > 0) {
                                         <li class="navItem active"><a href="">Dashboard</a></li>
                                         <li class="navItem submenu"><a href="admin_view_customer.php">View User</a></li>
                                         <li class="navItem submenu"><a href="admin_pending_customers.php">View Pending Customer</a></li>
-                                        <li class="navItem submenu"><a href="">Settings</a></li>
+                                        <li class="navItem submenu"><a href="admin_reset_pass.php">Reset Password</a></li>
                                         <li class="navItem"><a href="admin_logout.php">Logout</a></li>
                                     </ul>
                                 </nav>
